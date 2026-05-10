@@ -13,8 +13,10 @@
   
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
-</head>
 <body>
+
+  <!-- Full Page Network Background -->
+  <canvas id="network-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
 
   <!-- Custom Cursor -->
   <div class="custom-cursor"></div>
@@ -51,7 +53,6 @@
 
   <!-- Hero Section -->
   <header class="hero">
-    <canvas id="network-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
     <div class="hero-bg-glow"></div>
     <div class="container">
       <div class="hero-content mx-auto" style="text-align: center; display: flex; flex-direction: column; align-items: center;">

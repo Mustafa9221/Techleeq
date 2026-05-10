@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let particles = [];
     
     function resize() {
-      width = canvas.parentElement.offsetWidth;
-      height = canvas.parentElement.offsetHeight;
+      width = window.innerWidth;
+      height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
     }
