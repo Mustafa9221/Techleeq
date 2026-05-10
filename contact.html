@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Techleeq</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .form-group {
+      margin-bottom: var(--space-4);
+      display: flex;
+      flex-direction: column;
+    }
+    .form-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    .form-control:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.2);
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html" style="font-size: 24px; font-weight: 700; color: #fff;">
+          Techleeq<span style="color: var(--accent-primary);">.</span>
+        </a>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="btn btn-primary" onclick="window.location.href='contact.html'">Get Started</button>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Split Contact Section -->
+  <section class="section" style="padding-top: 160px;">
+    <div class="container">
+      <div class="grid grid-cols-2 gap-8 items-start animate-on-scroll">
+        
+        <!-- Left: Info -->
+        <div>
+          <h1 class="h1" style="margin-bottom: var(--space-3);">Get in <span class="text-gradient">Touch</span></h1>
+          <p class="text-large text-secondary" style="margin-bottom: var(--space-6);">
+            Ready to start your next big project? Reach out to our team to schedule a consultation.
+          </p>
+
+          <div style="margin-bottom: var(--space-4);">
+            <h4 class="text-small text-secondary text-uppercase" style="margin-bottom: var(--space-2);">Email</h4>
+            <p class="text-large">hello@techleeq.com</p>
+          </div>
+          
+          <div style="margin-bottom: var(--space-4);">
+            <h4 class="text-small text-secondary text-uppercase" style="margin-bottom: var(--space-2);">Phone</h4>
+            <p class="text-large">+1 (555) 123-4567</p>
+          </div>
+
+          <div style="margin-bottom: var(--space-6);">
+            <h4 class="text-small text-secondary text-uppercase" style="margin-bottom: var(--space-2);">Office</h4>
+            <p class="text-large">100 Innovation Way<br>San Francisco, CA 94105</p>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="card card-glass" style="padding: var(--space-4);">
+          <form onsubmit="event.preventDefault(); alert('Form submission demo!');">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Doe" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" placeholder="john@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">How can we help?</label>
+              <select class="form-control">
+                <option>AI Solutions</option>
+                <option>Web Development</option>
+                <option>Custom Software</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" placeholder="Tell us about your project..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-2);">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-4 gap-6">
+        <div style="grid-column: span 1;">
+          <a href="/" class="footer-logo">Techleeq<span style="color: var(--accent-primary);">.</span></a>
+          <p class="text-secondary text-small">Engineering the future of digital innovation for ambitious teams globally.</p>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">AI Solutions</a></li>
+            <li><a href="services.html">Web Development</a></li>
+            <li><a href="services.html">Data Science</a></li>
+            <li><a href="services.html">Custom Software</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html" style="color: var(--text-primary);">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Subscribe</h4>
+          <p class="text-secondary text-small" style="margin-bottom: var(--space-3);">Get the latest news and updates.</p>
+          <div class="flex" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden;">
+            <input type="email" placeholder="Email address" style="background: transparent; border: none; padding: 12px; color: #fff; width: 100%; outline: none;">
+            <button class="btn btn-primary" style="border-radius: 0;">&rarr;</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>&copy; 2026 Techleeq. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

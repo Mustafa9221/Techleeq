@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | Techleeq</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .job-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.2s ease;
+    }
+    .job-row:hover {
+      background: var(--bg-highlight);
+    }
+    .job-row:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html" style="font-size: 24px; font-weight: 700; color: #fff;">
+          Techleeq<span style="color: var(--accent-primary);">.</span>
+        </a>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="careers.html" style="color: var(--text-primary);">Careers</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="btn btn-primary" onclick="window.location.href='contact.html'">Get Started</button>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="section" style="padding-top: 160px; padding-bottom: var(--space-6); text-align: center;">
+    <div class="container animate-on-scroll">
+      <h1 class="h1" style="margin-bottom: var(--space-3);">Join the <span class="text-gradient">Revolution</span></h1>
+      <p class="text-large text-secondary mx-auto" style="max-width: 600px; margin: 0 auto;">
+        Build the technology of tomorrow with a team that values innovation, transparency, and extreme ownership.
+      </p>
+    </div>
+  </header>
+
+  <!-- Benefits -->
+  <section class="section" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="flex flex-col items-center animate-on-scroll" style="text-align: center; margin-bottom: var(--space-7);">
+        <h2 class="h2" style="margin-bottom: var(--space-3);">Perks & Benefits</h2>
+        <p class="text-large text-secondary" style="max-width: 600px;">
+          We take care of our team so you can focus on doing the best work of your life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-6 animate-on-scroll delay-100">
+        <div class="card card-glass">
+          <h3 class="h3" style="margin-bottom: var(--space-2);">Remote First</h3>
+          <p class="text-secondary">Work from anywhere in the world. We care about output, not hours spent at a desk.</p>
+        </div>
+        <div class="card card-glass">
+          <h3 class="h3" style="margin-bottom: var(--space-2);">Health & Wellness</h3>
+          <p class="text-secondary">Comprehensive global health coverage, mental health days, and gym stipends.</p>
+        </div>
+        <div class="card card-glass">
+          <h3 class="h3" style="margin-bottom: var(--space-2);">Learning Budget</h3>
+          <p class="text-secondary">$2,000 annual budget for conferences, courses, and books to accelerate your growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Roles -->
+  <section class="section">
+    <div class="container animate-on-scroll">
+      <h2 class="h2" style="margin-bottom: var(--space-5);">Open Positions</h2>
+      
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <!-- Role 1 -->
+        <a href="#" class="job-row">
+          <div>
+            <h3 class="h3" style="font-size: 20px; margin-bottom: 4px;">Senior Frontend Engineer</h3>
+            <p class="text-small text-secondary">Engineering &middot; Remote</p>
+          </div>
+          <span class="text-gradient" style="font-size: 24px;">&rarr;</span>
+        </a>
+
+        <!-- Role 2 -->
+        <a href="#" class="job-row">
+          <div>
+            <h3 class="h3" style="font-size: 20px; margin-bottom: 4px;">Machine Learning Researcher</h3>
+            <p class="text-small text-secondary">Data Science &middot; Remote / NYC</p>
+          </div>
+          <span class="text-gradient" style="font-size: 24px;">&rarr;</span>
+        </a>
+
+        <!-- Role 3 -->
+        <a href="#" class="job-row">
+          <div>
+            <h3 class="h3" style="font-size: 20px; margin-bottom: 4px;">Product Designer</h3>
+            <p class="text-small text-secondary">Design &middot; Remote / London</p>
+          </div>
+          <span class="text-gradient" style="font-size: 24px;">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-4 gap-6">
+        <div style="grid-column: span 1;">
+          <a href="/" class="footer-logo">Techleeq<span style="color: var(--accent-primary);">.</span></a>
+          <p class="text-secondary text-small">Engineering the future of digital innovation for ambitious teams globally.</p>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">AI Solutions</a></li>
+            <li><a href="services.html">Web Development</a></li>
+            <li><a href="services.html">Data Science</a></li>
+            <li><a href="services.html">Custom Software</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Subscribe</h4>
+          <p class="text-secondary text-small" style="margin-bottom: var(--space-3);">Get the latest news and updates.</p>
+          <div class="flex" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden;">
+            <input type="email" placeholder="Email address" style="background: transparent; border: none; padding: 12px; color: #fff; width: 100%; outline: none;">
+            <button class="btn btn-primary" style="border-radius: 0;">&rarr;</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>&copy; 2026 Techleeq. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
