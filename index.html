@@ -16,6 +16,10 @@
 </head>
 <body>
 
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-follower"></div>
+
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
@@ -47,19 +51,21 @@
 
   <!-- Hero Section -->
   <header class="hero">
+    <canvas id="network-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
     <div class="hero-bg-glow"></div>
     <div class="container">
-      <div class="hero-content">
-        <span class="badge fade-in-up" style="margin-bottom: var(--space-4);">
-          Introducing Techleeq AI Solutions &rarr;
-        </span>
+      <div class="hero-content mx-auto" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <div class="badge fade-in-up" style="margin-bottom: var(--space-4);">
+          <span style="display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #10B981;"></span>
+          Techleeq OS 2.0 is now live
+        </div>
         <h1 class="h1 fade-in-up delay-100" style="margin-bottom: var(--space-4);">
-          Engineering the Future of <span class="text-gradient">Digital Innovation.</span>
+          Engineering the Future of <br><span class="text-gradient">Digital Innovation.</span>
         </h1>
-        <p class="text-large text-secondary fade-in-up delay-200" style="margin-bottom: var(--space-5); max-width: 600px;">
+        <p class="text-large text-secondary fade-in-up delay-200 mx-auto" style="margin-bottom: var(--space-5); max-width: 600px;">
           World-class AI, custom software, and data science solutions for modern enterprises seeking to scale effortlessly.
         </p>
-        <div class="hero-buttons flex gap-4 fade-in-up delay-300">
+        <div class="hero-buttons flex gap-4 fade-in-up delay-300 justify-center">
           <button class="btn btn-primary" onclick="window.location.href='contact.html'">Get Started</button>
           <button class="btn btn-secondary" onclick="window.location.href='about.html'">Book Consultation</button>
         </div>
