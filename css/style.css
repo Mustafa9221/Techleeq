@@ -68,39 +68,175 @@ a, button, input, textarea, select {
   cursor: none !important;
 }
 
-/* Custom Cursor */
-.custom-cursor {
+/* ── Custom Cursor (DOM-based) ── */
+* {
+  cursor: none !important;
+}
+
+/* Wrapper — all layers share this base */
+#cursor-wrapper {
+  pointer-events: none;
   position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: visible;
+}
+
+.cursor-layer {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  z-index: 999999;
+}
+
+/* ── Center white dot ── */
+.cursor-center {
   width: 8px;
   height: 8px;
-  background-color: var(--accent-primary);
+  background: #fff;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
-  box-shadow: 0 0 10px var(--accent-glow);
+  box-shadow: 0 0 8px 3px rgba(0, 180, 255, 0.8);
+  transition: transform 0.1s ease;
 }
-.custom-cursor-follower {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(0, 210, 255, 0.4);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, transform 0.1s ease-out;
+.cursor-center.hover {
+  transform: translate(-50%, -50%) scale(1.6);
+  background: #a855f7;
+  box-shadow: 0 0 12px 4px rgba(168, 85, 247, 0.9);
 }
-.custom-cursor.hover {
-  width: 12px;
-  height: 12px;
-  background-color: var(--accent-secondary);
-}
-.custom-cursor-follower.hover {
+
+/* ── Hover Bloom ── */
+.cursor-bloom {
   width: 60px;
   height: 60px;
-  border-color: rgba(0, 210, 255, 0.8);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,180,255,0.15) 0%, rgba(0,180,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+  z-index: 999990;
+}
+.cursor-bloom.hover {
+  opacity: 1;
+  width: 90px;
+  height: 90px;
+}
+
+/* ── Inner ring with 4 tick marks ── */
+.cursor-inner {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(0, 180, 255, 0.7);
+  border-radius: 50%;
+  animation: spinCW 4s linear infinite;
+  position: relative;
+}
+.cursor-tick {
+  position: absolute;
+  background: #00b4ff;
+}
+.tick-v { width: 1.5px; height: 5px; left: 50%; transform: translateX(-50%); }
+.tick-h { height: 1.5px; width: 5px;  top: 50%; transform: translateY(-50%); }
+.tick-top    { top: -3px; }
+.tick-bottom { bottom: -3px; }
+.tick-left   { left: -3px; }
+.tick-right  { right: -3px; }
+
+/* ── Sweeping arc ── */
+.cursor-arc {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #00b4ff;
+  border-right-color: rgba(0,180,255,0.25);
+  animation: spinCW 1.4s linear infinite;
+  box-shadow: 0 0 8px rgba(0,180,255,0.5);
+  transition: border-top-color 0.2s, border-right-color 0.2s, animation-duration 0.2s;
+}
+.cursor-arc.hover {
+  border-top-color: #a855f7;
+  border-right-color: rgba(168,85,247,0.3);
+  animation-duration: 0.5s;
+  box-shadow: 0 0 12px rgba(168,85,247,0.6);
+}
+
+/* ── Orbital rings ── */
+.cursor-orbit {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  position: relative;
+}
+.orbit-track-1 {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  animation: spinCW 2s linear infinite;
+}
+.orbit-track-2 {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  animation: spinCCW 3s linear infinite;
+}
+.orbit-dot-bright {
+  position: absolute;
+  width: 5px; height: 5px;
+  background: #00b4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(0,180,255,0.9);
+}
+.orbit-dot-1 { top: 0; left: 50%; transform: translateX(-50%); }
+.orbit-dot-2 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.orbit-dot-faint {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: rgba(0,180,255,0.35);
+  border-radius: 50%;
+  top: 50%; right: 0; transform: translateY(-50%);
+}
+
+/* ── Particle trail ── */
+.cursor-particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+  animation: particleFade 0.8s ease forwards;
+}
+@keyframes particleFade {
+  0%   { opacity: 1;   transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(0); }
+}
+
+/* ── Triple ripple on click ── */
+.cursor-ripple-effect {
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,180,255,0.8);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 999997;
+  animation: rippleOut 0.7s ease forwards;
+}
+@keyframes rippleOut {
+  0%   { width: 10px;  height: 10px;  opacity: 1; }
+  100% { width: 80px;  height: 80px;  opacity: 0; }
+}
+
+/* ── Keyframes ── */
+@keyframes spinCW  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+@keyframes spinCCW { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
+
+/* Scanline Backdrop */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+  background-size: 100% 4px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 a {
