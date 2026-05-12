@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="services.html">Services</a>
       <a href="careers.html">Careers</a>
       <a href="blog.html">Blog</a>
-      <button class="btn btn-primary" onclick="window.location.href='contact.html'" style="margin-top: 24px;">Get Started</button>
+      <button class="btn btn-primary" onclick="window.location.href='contact.html'" style="margin-top: 24px;">Schedule a Meeting</button>
     `;
     document.body.appendChild(overlay);
 
@@ -57,7 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Futuristic Target Cursor
+  // Futuristic Target Cursor — only on devices with a real mouse (fine pointer)
+  // On touch/mobile devices window.matchMedia('(pointer: fine)') is false,
+  // so we skip all cursor setup and leave the native cursor untouched.
+  const hasMouse = window.matchMedia('(pointer: fine)').matches;
+
+  if (hasMouse) {
   let cursorWrapper = document.getElementById('cursor-wrapper');
   
   if (!cursorWrapper) {
@@ -175,22 +180,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     animateLag();
 
-    // Hover states
-    const hoverElements = document.querySelectorAll('a, button, input, textarea, select, .card');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        isHovering = true;
-        layerCenter.classList.add('hover');
-        bloom.classList.add('hover');
-        arcEl.classList.add('hover');
+    // Hover states — only on interactive elements
+    const updateHoverElements = () => {
+      const hoverElements = document.querySelectorAll('a, button, input, textarea, select, [onclick], .cursor-pointer');
+      hoverElements.forEach(el => {
+        // Remove existing to avoid duplicates if called multiple times
+        el.removeEventListener('mouseenter', startHover);
+        el.removeEventListener('mouseleave', endHover);
+        
+        el.addEventListener('mouseenter', startHover);
+        el.addEventListener('mouseleave', endHover);
       });
-      el.addEventListener('mouseleave', () => {
-        isHovering = false;
-        layerCenter.classList.remove('hover');
-        bloom.classList.remove('hover');
-        arcEl.classList.remove('hover');
-      });
-    });
+    };
+
+    function startHover() {
+      isHovering = true;
+      layerCenter.classList.add('hover');
+      bloom.classList.add('hover');
+      arcEl.classList.add('hover');
+    }
+
+    function endHover() {
+      isHovering = false;
+      layerCenter.classList.remove('hover');
+      bloom.classList.remove('hover');
+      arcEl.classList.remove('hover');
+    }
+
+    updateHoverElements();
+    // Re-run after a short delay to catch dynamically added elements like mobile menu
+    setTimeout(updateHoverElements, 1000);
 
     // Triple Ripple Click
     document.addEventListener('mousedown', (e) => {
@@ -206,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+  } // end hasMouse
 
   // Network Canvas Background
   const canvas = document.getElementById('network-canvas');

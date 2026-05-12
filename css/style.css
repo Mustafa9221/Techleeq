@@ -61,16 +61,13 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
 }
 
-a, button, input, textarea, select {
-  cursor: none !important;
-}
-
-/* ── Custom Cursor (DOM-based) ── */
-* {
-  cursor: none !important;
+/* ── Custom Cursor — only on mouse-capable devices ── */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 /* Wrapper — all layers share this base */
@@ -373,6 +370,18 @@ img {
   background: var(--bg-highlight);
 }
 
+.btn-themed {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.btn-themed:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(0, 112, 243, 0.3);
+  background: rgba(0, 112, 243, 0.05);
+  transform: translateY(-2px);
+}
+
 .btn-text {
   background: transparent;
   color: var(--accent-primary);
@@ -396,7 +405,14 @@ img {
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 0 30px rgba(0, 112, 243, 0.15);
+  border-color: var(--accent-primary);
+}
+
+.card-static:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-subtle);
 }
 
 .card-glass {
@@ -478,9 +494,24 @@ textarea.form-control {
 .nav-links a {
   color: var(--text-secondary);
   font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
 }
 .nav-links a:hover {
   color: var(--text-primary);
+}
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* Hero Section */
