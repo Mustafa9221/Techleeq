@@ -639,7 +639,18 @@ header.section {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: var(--space-3);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+}
+.logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+.footer-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 .footer-links li {
   margin-bottom: var(--space-2);
