@@ -106,7 +106,7 @@
         <div class="profile-grid">
           <div class="animate-on-scroll">
             <div class="profile-image-container">
-              <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,112,243,0.2) 0%, rgba(0,0,0,0) 100%);"></div>
+              <img id="member-image" src="" alt="Team Member" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="social-links">
               <a href="#" class="social-icon" aria-label="LinkedIn">
@@ -170,6 +170,7 @@
         name: 'Alex Mercer',
         role: 'Founder & CEO',
         tag: 'Leadership',
+        image: 'assets/images/alex-mercer.png',
         bio: 'Alex Mercer founded Techleeq with a vision to revolutionize how enterprises interact with AI. With over 15 years of experience in systems architecture and venture capital, Alex leads the company with a focus on sustainable innovation and extreme ownership.',
         expertise: ['Strategic Leadership', 'Venture Capital', 'Systems Architecture', 'Product Vision'],
         vision: '"Innovation is not just about new tools, but about fundamentally changing how we solve problems."'
@@ -178,6 +179,7 @@
         name: 'Sarah Jenkins',
         role: 'Chief Technology Officer',
         tag: 'Engineering',
+        image: 'assets/images/sarah-jenkins.png',
         bio: 'Sarah Jenkins is the technical powerhouse behind Techleeq\'s core infrastructure. A former lead engineer at top-tier Silicon Valley firms, she specializes in high-concurrency systems and distributed databases.',
         expertise: ['Distributed Systems', 'Cloud Infrastructure', 'Cybersecurity', 'Scalable APIs'],
         vision: '"Building robust systems is an art form that requires absolute dedication to performance and security."'
@@ -186,6 +188,7 @@
         name: 'David Chen',
         role: 'Head of AI Research',
         tag: 'Research',
+        image: 'assets/images/david-chen.png',
         bio: 'David leads our research department, focusing on fine-tuning large language models and developing proprietary neural architectures. His work ensures that Techleeq remains at the absolute cutting edge of the AI revolution.',
         expertise: ['Machine Learning', 'Neural Networks', 'NLP', 'Data Strategy'],
         vision: '"The boundary between human intuition and machine intelligence is blurring, and we are the architects of that transition."'
@@ -194,6 +197,7 @@
         name: 'Elena Rostova',
         role: 'Lead Product Designer',
         tag: 'Design',
+        image: 'assets/images/elena-rostova.png',
         bio: 'Elena is responsible for the intuitive and futuristic interfaces of Techleeq\'s products. She believes that complex technology should be hidden behind elegant, user-centric design that empowers users.',
         expertise: ['UX/UI Design', 'Design Systems', 'User Research', 'Motion Design'],
         vision: '"Good design is invisible; great design is empowering."'
@@ -207,6 +211,8 @@
       document.getElementById('member-tag').textContent = data.tag;
       document.getElementById('member-bio').textContent = data.bio;
       document.getElementById('member-vision').textContent = data.vision;
+      document.getElementById('member-image').src = data.image;
+      document.getElementById('member-image').alt = data.name;
       
       const expertiseList = document.getElementById('member-expertise');
       expertiseList.innerHTML = '';

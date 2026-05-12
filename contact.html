@@ -124,11 +124,14 @@
 
             <div class="form-group">
               <label class="form-label">How can we help?</label>
-              <select class="form-control">
-                <option>AI Solutions</option>
-                <option>Web Development</option>
-                <option>Custom Software</option>
-                <option>Other</option>
+              <select id="service-select" class="form-control">
+                <option value="ai">AI Solutions</option>
+                <option value="web">Web Development</option>
+                <option value="data">Data Science</option>
+                <option value="automation">Automation</option>
+                <option value="consulting">Tech Consulting</option>
+                <option value="software">Custom Software</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
@@ -195,5 +198,23 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Handle service pre-selection from URL parameter
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const serviceId = urlParams.get('service');
+      
+      if (serviceId) {
+        const select = document.getElementById('service-select');
+        if (select) {
+          // Check if the value exists in the options
+          const options = Array.from(select.options).map(opt => opt.value);
+          if (options.includes(serviceId)) {
+            select.value = serviceId;
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
