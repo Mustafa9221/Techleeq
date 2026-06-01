@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Mozack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <div class="mesh-bg"></div>
+
+    <nav class="navbar">
+        <div class="logo" style="display: flex; align-items: center;"><a href="index.html"><img src="assets/logo.png"
+                    alt="Mozack Logo" style="height: 40px;"></a></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blogs</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html" class="btn-yellow nav-mobile-cta">Get Started <span class="arrow-bg"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg></span></a>
+        </div>
+        <a href="contact.html" class="btn-yellow">Get Started <span class="arrow-bg"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg></span></a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <main class="inner-page-layout" style="justify-content: center; align-items: center; text-align: center;">
+        <div style="font-size: clamp(100px, 15vw, 200px); font-weight: 700; line-height: 1; margin-bottom: 1rem; color: var(--yellow);">
+            404
+        </div>
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--text-white);">Lost in the <span class="italic" style="font-family: var(--font-serif); font-weight: 500;">data stream.</span></h1>
+        <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 3rem; color: var(--text-white);">The page you are looking for does not exist or has been moved.</p>
+        
+        <a href="index.html" class="btn-yellow" style="box-shadow: none;">Back to Home</a>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo"><img src="assets/logo.png" alt="Mozack Logo"
+                        style="height: 40px;"></a>
+                <p class="footer-desc">Your One-Stop Hub Spot To Every Digital Solution!</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="service-details.html?id=web">Web Design</a></li>
+                    <li><a href="service-details.html?id=logo">Logo Design</a></li>
+                    <li><a href="service-details.html?id=seo">SEO Optimization</a></li>
+                    <li><a href="service-details.html?id=app">App Development</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Subscribe</h4>
+                <p class="footer-desc" style="margin-bottom: 1rem;">Get the latest news and updates.</p>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="Email address">
+                    <button>&rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>&copy; 2026 Mozack. All rights reserved.</div>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script src="nav.js"></script>
+    </body>
+</html>

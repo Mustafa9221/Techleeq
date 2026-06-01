@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Mozack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .badge {
+            background: var(--yellow);
+            color: var(--text-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+        .post-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        .post-link .glass-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .post-link .glass-card p:last-child {
+            margin-top: auto !important;
+        }
+    </style>
+    </head>
+<body>
+    <div class="mesh-bg"></div>
+
+    <nav class="navbar">
+        <div class="logo" style="display: flex; align-items: center;"><a href="index.html"><img src="assets/logo.png"
+                    alt="Mozack Logo" style="height: 40px;"></a></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blogs</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html" class="btn-yellow nav-mobile-cta">Get Started <span class="arrow-bg"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg></span></a>
+        </div>
+        <a href="contact.html" class="btn-yellow">Get Started <span class="arrow-bg"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg></span></a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <main class="inner-page-layout">
+        <div class="glass-container">
+            <div class="glass-header">
+                <h1>Insights & <span class="italic" style="font-family: var(--font-serif); font-weight: 500;">News</span></h1>
+                <p>Thoughts, news, and best practices from the engineers at Techleeq.</p>
+            </div>
+            
+            <a href="#" class="post-link">
+                <div class="glass-card" style="margin-bottom: 2rem; padding: 3rem;">
+                    <span class="badge">Featured</span>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">The Future of LLMs in Enterprise Workflows</h2>
+                    <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">Discover how integrating large language models is dramatically reducing operational overhead for Fortune 500 companies.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Sarah Jenkins" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <p style="margin: 0; font-weight: 600; font-size: 0.9rem;">Sarah Jenkins</p>
+                            <p style="margin: 0; opacity: 0.7; font-size: 0.8rem;">May 10, 2026 &middot; 8 min read</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="glass-grid">
+                <a href="#" class="post-link">
+                    <div class="glass-card">
+                        <span class="badge">Engineering</span>
+                        <h3>Scaling Kubernetes for Machine Learning</h3>
+                        <p>A deep dive into our infrastructure stack and how we manage distributed training workloads.</p>
+                        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.8rem;">May 5, 2026 &middot; 6 min read</p>
+                    </div>
+                </a>
+                <a href="#" class="post-link">
+                    <div class="glass-card">
+                        <span class="badge">Design</span>
+                        <h3>Designing Dark Mode UI Systems</h3>
+                        <p>Best practices for maintaining contrast, depth, and accessibility in dark interfaces.</p>
+                        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.8rem;">April 28, 2026 &middot; 5 min read</p>
+                    </div>
+                </a>
+                <a href="#" class="post-link">
+                    <div class="glass-card">
+                        <span class="badge">AI & ML</span>
+                        <h3>Computer Vision in Manufacturing</h3>
+                        <p>How automated defect detection is saving millions on the assembly line.</p>
+                        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.8rem;">April 15, 2026 &middot; 7 min read</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo"><img src="assets/logo.png" alt="Mozack Logo"
+                        style="height: 40px;"></a>
+                <p class="footer-desc">Your One-Stop Hub Spot To Every Digital Solution!</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="service-details.html?id=web">Web Design</a></li>
+                    <li><a href="service-details.html?id=logo">Logo Design</a></li>
+                    <li><a href="service-details.html?id=seo">SEO Optimization</a></li>
+                    <li><a href="service-details.html?id=app">App Development</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blogs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Subscribe</h4>
+                <p class="footer-desc" style="margin-bottom: 1rem;">Get the latest news and updates.</p>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="Email address">
+                    <button>&rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>&copy; 2026 Mozack. All rights reserved.</div>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script src="nav.js"></script>
+    </body>
+</html>
