@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Mozack</title>
@@ -165,4 +166,230 @@
     </footer>
     <script src="nav.js"></script>
     </body>
+=======
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Insights | Techleeq</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .filter-pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .filter-pill:hover, .filter-pill.active {
+      background: var(--bg-highlight);
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+    }
+    .search-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 8px 24px;
+      color: var(--text-primary);
+      outline: none;
+      width: 250px;
+    }
+    .search-input:focus {
+      border-color: var(--accent-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full Page Network Background -->
+  <canvas id="network-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/logo.png" alt="Techleeq Logo">
+        </a>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="blog.html" style="color: var(--text-primary);">Blog</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="btn btn-primary" onclick="window.location.href='contact.html'">Schedule a Meeting</button>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="section" style="padding-top: 160px; padding-bottom: var(--space-4); text-align: center; position: relative;">
+    <div class="container animate-on-scroll" style="position: relative; z-index: 10;">
+      <h1 class="h1" style="margin-bottom: var(--space-3);">Insights & <span class="text-gradient">News</span></h1>
+      <p class="text-large text-secondary mx-auto" style="max-width: 600px; margin: 0 auto;">
+        Thoughts, news, and best practices from the engineers at Techleeq.
+      </p>
+    </div>
+  </header>
+
+  <!-- Featured Post -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container animate-on-scroll">
+      <div class="card card-glass" style="padding: 0; overflow: hidden; position: relative;">
+        <div style="width: 100%; aspect-ratio: 21/9; background: #1F2937; position: relative;">
+          <!-- Featured Image -->
+          <img src="assets/images/ai-automation.png" alt="Future of LLMs" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+          
+          <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(0deg, rgba(11,15,25,1) 0%, rgba(11,15,25,0) 100%); padding: var(--space-6);">
+            <span class="badge" style="margin-bottom: var(--space-3);">Featured</span>
+            <h2 class="h2" style="margin-bottom: var(--space-2);">The Future of LLMs in Enterprise Workflows</h2>
+            <p class="text-large text-secondary" style="margin-bottom: var(--space-4); max-width: 800px;">Discover how integrating large language models is dramatically reducing operational overhead for Fortune 500 companies.</p>
+            <div class="flex items-center gap-3">
+              <div style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: var(--bg-highlight); overflow: hidden;">
+                <img src="assets/images/sarah-jenkins.png" alt="Sarah Jenkins" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div>
+                <p class="text-small">Sarah Jenkins</p>
+                <p class="text-small text-muted">May 10, 2026 &middot; 8 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="section" style="padding: var(--space-4) 0;">
+    <div class="container flex justify-between items-center flex-wrap gap-4 animate-on-scroll">
+      <div class="flex gap-2" style="flex-wrap: wrap;">
+        <button class="filter-pill active">All Posts</button>
+        <button class="filter-pill">AI & Machine Learning</button>
+        <button class="filter-pill">Engineering</button>
+        <button class="filter-pill">Design</button>
+      </div>
+      <div>
+        <input type="text" class="search-input" placeholder="Search articles...">
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Grid -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="grid grid-cols-3 gap-6 animate-on-scroll delay-100">
+        <!-- Post 1 -->
+        <a href="#" class="card" style="padding: 0; overflow: hidden; display: block;">
+          <div style="width: 100%; aspect-ratio: 16/9; background: #1F2937;"></div>
+          <div style="padding: var(--space-4);">
+            <span class="badge" style="margin-bottom: var(--space-3);">Engineering</span>
+            <h3 class="h3" style="margin-bottom: var(--space-2); font-size: 24px;">Scaling Kubernetes for Machine Learning</h3>
+            <p class="text-secondary" style="margin-bottom: var(--space-4);">A deep dive into our infrastructure stack and how we manage distributed training workloads.</p>
+            <p class="text-small text-muted">May 5, 2026 &middot; 6 min read</p>
+          </div>
+        </a>
+
+        <!-- Post 2 -->
+        <a href="#" class="card" style="padding: 0; overflow: hidden; display: block;">
+          <div style="width: 100%; aspect-ratio: 16/9; background: #1F2937;"></div>
+          <div style="padding: var(--space-4);">
+            <span class="badge" style="margin-bottom: var(--space-3);">Design</span>
+            <h3 class="h3" style="margin-bottom: var(--space-2); font-size: 24px;">Designing Dark Mode UI Systems</h3>
+            <p class="text-secondary" style="margin-bottom: var(--space-4);">Best practices for maintaining contrast, depth, and accessibility in dark interfaces.</p>
+            <p class="text-small text-muted">April 28, 2026 &middot; 5 min read</p>
+          </div>
+        </a>
+
+        <!-- Post 3 -->
+        <a href="#" class="card" style="padding: 0; overflow: hidden; display: block;">
+          <div style="width: 100%; aspect-ratio: 16/9; background: #1F2937; overflow: hidden;">
+            <img src="assets/images/ai-automation.png" alt="Computer Vision" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: var(--space-4);">
+            <span class="badge" style="margin-bottom: var(--space-3);">AI & ML</span>
+            <h3 class="h3" style="margin-bottom: var(--space-2); font-size: 24px;">Computer Vision in Manufacturing</h3>
+            <p class="text-secondary" style="margin-bottom: var(--space-4);">How automated defect detection is saving millions on the assembly line.</p>
+            <p class="text-small text-muted">April 15, 2026 &middot; 7 min read</p>
+          </div>
+        </a>
+      </div>
+      
+      <div class="flex justify-center" style="margin-top: var(--space-6);">
+        <button class="btn btn-secondary">Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-4 gap-6">
+        <div style="grid-column: span 1;">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/logo.png" alt="Techleeq Logo">
+          </a>
+          <p class="text-secondary text-small">Engineering the future of digital innovation for ambitious teams globally.</p>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">AI Solutions</a></li>
+            <li><a href="services.html">Web Development</a></li>
+            <li><a href="services.html">Data Science</a></li>
+            <li><a href="services.html">Custom Software</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-small" style="margin-bottom: var(--space-3); color: #fff;">Subscribe</h4>
+          <p class="text-secondary text-small" style="margin-bottom: var(--space-3);">Get the latest news and updates.</p>
+          <div class="flex" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden;">
+            <input type="email" placeholder="Email address" style="background: transparent; border: none; padding: 12px; color: #fff; width: 100%; outline: none;">
+            <button class="btn btn-primary" style="border-radius: 0;">&rarr;</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>&copy; 2026 Techleeq. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+>>>>>>> 0e87323a7e0cf65859a63cb576f81b0ab9c195f8
 </html>
