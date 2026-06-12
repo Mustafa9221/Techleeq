@@ -3,9 +3,8 @@ import { SocialProofBar } from '../components/SocialProofBar';
 import { ValueProposition } from '../components/ValueProposition';
 import { FeaturesGrid } from '../components/FeaturesGrid';
 import { HowItWorks } from '../components/HowItWorks';
-import { PricingTeaser } from '../components/PricingTeaser';
-import { Testimonials } from '../components/Testimonials';
 import { CTABanner } from '../components/CTABanner';
+import { ServicesSlider } from '../components/ServicesSlider';
 
 export function HomePage() {
   return (
@@ -14,9 +13,8 @@ export function HomePage() {
       <SocialProofBar />
       <ValueProposition />
       <FeaturesGrid />
+      <ServicesSlider />
       <HowItWorks />
-      <PricingTeaser />
-      <Testimonials />
       <CTABanner />
     </>
   );

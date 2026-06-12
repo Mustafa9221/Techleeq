@@ -1,16 +1,6 @@
 import { Link } from 'react-router';
-import { Target, Users, Globe2, Award, ArrowRight, Lightbulb, Shield, Zap } from 'lucide-react';
+import { Target, Users, Globe2, Award, ArrowRight, Lightbulb, Shield, Zap, Twitter, Linkedin } from 'lucide-react';
 import { Button } from '../components/Button';
-
-const timeline = [
-  { year: '2018', title: 'Founded in Lagos', desc: 'TechLeeq was founded by a team of enterprise software veterans frustrated with the complexity and cost of existing business management tools.' },
-  { year: '2019', title: 'First 100 customers', desc: 'Launched the beta version to early adopters across Nigeria and Ghana. Reached 100 paying customers within 6 months.' },
-  { year: '2020', title: 'Series A funding', desc: 'Raised $4.2M to expand the product team and accelerate development of the enterprise module suite.' },
-  { year: '2021', title: 'Expansion to 12 countries', desc: 'Launched across East and West Africa with localized compliance modules. Passed 10,000 active users.' },
-  { year: '2022', title: 'Professional v3.0 released', desc: 'Major platform overhaul with the full module suite, offline-first architecture, and end-to-end encryption.' },
-  { year: '2023', title: 'ISO 27001 certified', desc: 'Achieved ISO 27001 information security certification and SOC 2 Type II compliance, clearing the path for enterprise deals.' },
-  { year: '2024', title: '50,000+ businesses served', desc: 'TechLeeq is now the fastest-growing business management platform in sub-Saharan Africa.' },
-];
 
 const values = [
   { icon: Lightbulb, title: 'Simplicity first', desc: 'Enterprise power should not require enterprise complexity. We obsess over usability so your team can focus on work, not software.' },
@@ -20,12 +10,30 @@ const values = [
 ];
 
 const team = [
-  { name: 'Emeka Okafor', title: 'CEO & Co-Founder', bio: 'Former Head of Engineering at Interswitch. 15 years building enterprise software across Africa and Europe.' },
-  { name: 'Amira Hassan', title: 'CPO & Co-Founder', bio: 'Previously led product at Flutterwave. Deep expertise in fintech and business workflow design.' },
-  { name: 'Kofi Mensah', title: 'CTO', bio: 'Distributed systems engineer, ex-Andela. Architect of TechLeeq\'s offline-first sync engine.' },
-  { name: 'Priya Sharma', title: 'VP Sales', bio: 'Scaled sales teams at SAP and Oracle across EMEA. Joined TechLeeq to bring enterprise sales discipline to a lean company.' },
-  { name: 'Fatima Al-Rashid', title: 'Head of Customer Success', bio: 'Passionate about turning customers into champions. Built CS from 0 to 50+ at Paystack.' },
-  { name: 'David Nkosi', title: 'Head of Design', bio: 'Ex-IDEO and Google. Leads the vision for TechLeeq\'s design system and user experience.' },
+  { 
+    name: 'Emeka Okafor', 
+    title: 'CEO & Co-Founder', 
+    bio: 'Former Head of Engineering at Interswitch. 15 years building enterprise software across Africa and Europe.',
+    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop',
+    twitter: '#',
+    linkedin: '#'
+  },
+  { 
+    name: 'Amira Hassan', 
+    title: 'CPO & Co-Founder', 
+    bio: 'Previously led product at Flutterwave. Deep expertise in fintech and business workflow design.',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop',
+    twitter: '#',
+    linkedin: '#'
+  },
+  { 
+    name: 'Kofi Mensah', 
+    title: 'CTO', 
+    bio: 'Distributed systems engineer, ex-Andela. Architect of TechLeeq\'s offline-first sync engine.',
+    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop',
+    twitter: '#',
+    linkedin: '#'
+  },
 ];
 
 const stats = [
@@ -99,32 +107,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[800px] mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-[32px] md:text-[40px] text-[var(--color-text-primary)] mb-3" style={{ letterSpacing: 'var(--tracking-tight)' }}>Our journey</h2>
-            <p className="text-[var(--color-text-secondary)]">From a Lagos apartment to 50,000+ businesses worldwide.</p>
-          </div>
-          <div className="relative">
-            <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-[var(--color-bg-border)] md:-translate-x-px" />
-            <div className="space-y-8">
-              {timeline.map((item, i) => (
-                <div key={item.year} className={`relative flex gap-6 md:gap-0 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className="absolute left-[12px] md:left-1/2 md:-translate-x-1/2 w-5 h-5 rounded-full bg-[var(--color-primary)] border-4 border-[var(--color-bg-base)] z-10 top-1" />
-                  <div className={`pl-12 md:pl-0 md:w-1/2 ${i % 2 === 0 ? 'md:pr-10 md:text-right' : 'md:pl-10'}`}>
-                    <span className="inline-block mb-2 px-3 py-1 rounded-full bg-[rgba(10,132,255,0.12)] text-[var(--color-primary)] text-[12px] font-semibold">{item.year}</span>
-                    <h4 className="text-[16px] font-semibold text-[var(--color-text-primary)] mb-1">{item.title}</h4>
-                    <p className="text-[13px] text-[var(--color-text-secondary)]">{item.desc}</p>
-                  </div>
-                  <div className="hidden md:block md:w-1/2" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Team */}
       <section className="px-[20px] md:px-[40px] pb-[80px]">
         <div className="max-w-[1100px] mx-auto">
@@ -135,39 +117,22 @@ export function AboutPage() {
             </div>
             <h2 className="text-[32px] md:text-[40px] text-[var(--color-text-primary)]" style={{ letterSpacing: 'var(--tracking-tight)' }}>Meet the team</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {team.map((member) => (
-              <div key={member.name} className="p-6 rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all">
-                <div className="w-14 h-14 rounded-full bg-[var(--color-bg-elevated)] flex items-center justify-center mb-4 text-[20px] font-bold text-[var(--color-primary)]" style={{ fontFamily: 'Syne' }}>
-                  {member.name.split(' ').map(n => n[0]).join('')}
+              <div key={member.name} className="p-6 rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col items-center text-center">
+                <div className="w-[120px] h-[120px] rounded-full overflow-hidden mb-5 border-4 border-[rgba(10,132,255,0.08)]">
+                  <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
                 </div>
-                <h4 className="text-[16px] font-semibold text-[var(--color-text-primary)] mb-0.5">{member.name}</h4>
-                <p className="text-[12px] text-[var(--color-primary)] font-medium mb-3">{member.title}</p>
-                <p className="text-[13px] text-[var(--color-text-secondary)] leading-relaxed">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Awards */}
-      <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[900px] mx-auto">
-          <div className="flex items-center gap-2 mb-8">
-            <Award size={20} className="text-[var(--color-accent-amber)]" />
-            <h2 className="text-[24px] font-semibold text-[var(--color-text-primary)]">Recognition</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              { award: 'Best Business Software 2024', org: 'Africa Tech Summit' },
-              { award: 'Top 50 SaaS Startups', org: 'TechCrunch Africa' },
-              { award: 'Gartner Cool Vendor', org: 'Gartner Research 2023' },
-            ].map((a) => (
-              <div key={a.award} className="p-5 rounded-[var(--radius-lg)] bg-[rgba(245,166,35,0.06)] border border-[rgba(245,166,35,0.2)] flex items-start gap-4">
-                <Award size={22} className="text-[var(--color-accent-amber)] shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-[14px] font-semibold text-[var(--color-text-primary)] mb-0.5">{a.award}</p>
-                  <p className="text-[12px] text-[var(--color-text-muted)]">{a.org}</p>
+                <h4 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-1">{member.name}</h4>
+                <p className="text-[13px] text-[var(--color-primary)] font-medium mb-4">{member.title}</p>
+                <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-6">{member.bio}</p>
+                <div className="flex gap-4 mt-auto">
+                  <a href={member.twitter} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all">
+                    <Twitter size={16} />
+                  </a>
+                  <a href={member.linkedin} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all">
+                    <Linkedin size={16} />
+                  </a>
                 </div>
               </div>
             ))}
@@ -181,7 +146,7 @@ export function AboutPage() {
           <h2 className="text-[30px] text-[var(--color-text-primary)] mb-4" style={{ letterSpacing: 'var(--tracking-tight)' }}>Ready to join 50,000+ businesses?</h2>
           <p className="text-[var(--color-text-secondary)] mb-8">Start your free 14-day trial. No credit card required.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/download"><Button variant="primary" size="lg">Start Free Trial</Button></Link>
+            <Link to="/products"><Button variant="primary" size="lg">Start Free Trial</Button></Link>
             <Link to="/careers"><Button variant="secondary" size="lg">Join Our Team <ArrowRight size={16} /></Button></Link>
           </div>
         </div>

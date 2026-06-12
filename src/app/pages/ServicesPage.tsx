@@ -6,73 +6,46 @@ import { Button } from '../components/Button';
 
 const services = [
   {
-    icon: Headphones,
+    imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop',
     title: 'Implementation & Onboarding',
     color: 'var(--color-primary)',
     desc: 'Our certified implementation specialists handle the full rollout — from data migration to staff training — so your team is productive from day one.',
     features: ['Dedicated project manager', 'Data migration from legacy systems', 'Custom workflow configuration', 'Multi-site rollout coordination', 'Go-live support & hypercare'],
   },
   {
-    icon: BookOpen,
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop',
     title: 'Training & Enablement',
     color: 'var(--color-accent-teal)',
     desc: 'Live virtual training, on-demand video courses, and custom playbooks tailored to each role in your organization.',
     features: ['Role-based training programs', 'Live virtual instructor sessions', 'Self-paced video library (150+ lessons)', 'Admin certification program', 'Ongoing lunch-and-learn sessions'],
   },
   {
-    icon: Wrench,
+    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop',
     title: 'Custom Development',
     color: 'var(--color-accent-violet)',
     desc: 'Need a module that doesn\'t exist yet? Our engineering team builds custom extensions, integrations, and workflows on your timeline.',
     features: ['Custom module development', 'API integration with third-party tools', 'ERP/accounting system connectors', 'Custom report & dashboard builds', 'White-label configurations'],
   },
   {
-    icon: BarChart3,
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop',
     title: 'Business Intelligence & Analytics',
     color: 'var(--color-accent-amber)',
     desc: 'Turn your TechLeeq data into strategic insight with our BI consulting team. We build dashboards that actually get used.',
     features: ['KPI dashboard design', 'Executive reporting templates', 'Data warehouse connectors', 'Automated scheduled reports', 'Predictive analytics models'],
   },
   {
-    icon: RefreshCw,
+    imageUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600&auto=format&fit=crop',
     title: 'Managed Updates & Maintenance',
     color: 'var(--color-accent-green)',
     desc: 'Let our ops team handle version upgrades, patch deployments, and database maintenance on your schedule, not ours.',
     features: ['Scheduled update deployments', 'Zero-downtime upgrade process', 'Database optimization & cleanup', 'Configuration backup & recovery', 'Change management advisory'],
   },
   {
-    icon: ShieldCheck,
+    imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600&auto=format&fit=crop',
     title: 'Security & Compliance Advisory',
     color: 'var(--color-accent-red)',
     desc: 'Our compliance specialists help you meet local regulatory requirements — from NDPR to GDPR — and prepare for security audits.',
     features: ['NDPR / GDPR compliance review', 'SOC 2 audit preparation', 'Penetration testing support', 'Access control policy design', 'Data residency configuration'],
-  },
-];
-
-const supportTiers = [
-  {
-    name: 'Standard',
-    hours: 'Business hours',
-    response: '< 24 hours',
-    channels: 'Email',
-    sla: '99.5%',
-    plan: 'Starter plans',
-  },
-  {
-    name: 'Priority',
-    hours: 'Extended (8am–10pm)',
-    response: '< 4 hours',
-    channels: 'Email + Live Chat',
-    sla: '99.9%',
-    plan: 'Professional plans',
-  },
-  {
-    name: 'Enterprise',
-    hours: '24/7/365',
-    response: '< 1 hour',
-    channels: 'Email, Chat, Phone, Slack',
-    sla: '99.99%',
-    plan: 'Enterprise plans',
   },
 ];
 
@@ -106,10 +79,11 @@ export function ServicesPage() {
       {/* Services grid */}
       <section className="px-[20px] md:px-[40px] pb-[80px]">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ icon: Icon, title, color, desc, features }) => (
-            <div key={title} className="group p-8 rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col">
-              <div className="w-12 h-12 rounded-[var(--radius-lg)] flex items-center justify-center mb-5" style={{ background: `color-mix(in srgb, ${color} 15%, transparent)` }}>
-                <Icon size={22} style={{ color }} />
+          {services.map(({ imageUrl, title, color, desc, features }) => (
+            <div key={title} className="group p-8 rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col overflow-hidden">
+              <div className="w-[calc(100%+4rem)] h-[180px] -mt-8 -mx-8 mb-6 relative max-w-none">
+                <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-surface)] to-transparent" />
               </div>
               <h3 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-3">{title}</h3>
               <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-5">{desc}</p>
@@ -136,9 +110,6 @@ export function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
             {processSteps.map((step, i) => (
               <div key={step.step} className="relative flex flex-col items-center text-center px-6">
-                {i < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute right-0 top-[28px] w-1/2 h-px bg-[var(--color-bg-border)]" />
-                )}
                 <div className="w-14 h-14 rounded-full bg-[rgba(10,132,255,0.12)] border border-[rgba(10,132,255,0.25)] flex items-center justify-center mb-4 z-10">
                   <span className="font-['Syne'] font-bold text-[var(--color-primary)] text-[14px]">{step.step}</span>
                 </div>
@@ -147,57 +118,6 @@ export function ServicesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Support tiers */}
-      <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[1000px] mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <Clock size={18} className="text-[var(--color-primary)]" />
-              <span className="text-[12px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] font-semibold">Support SLAs</span>
-            </div>
-            <h2 className="text-[32px] md:text-[40px] text-[var(--color-text-primary)]" style={{ letterSpacing: 'var(--tracking-tight)' }}>Support that matches your needs</h2>
-          </div>
-          <div className="rounded-[var(--radius-xl)] border border-[var(--color-bg-border)] overflow-hidden">
-            <div className="grid grid-cols-4 bg-[var(--color-bg-elevated)] border-b border-[var(--color-bg-border)] p-5 text-[12px] uppercase tracking-[0.1em] text-[var(--color-text-muted)] font-semibold">
-              <div>Tier</div>
-              <div>Response time</div>
-              <div>Channels</div>
-              <div>Uptime SLA</div>
-            </div>
-            {supportTiers.map((tier, i) => (
-              <div key={tier.name} className={`grid grid-cols-4 p-5 border-b border-[var(--color-bg-border)] last:border-b-0 items-center ${i === 2 ? 'bg-[rgba(10,132,255,0.04)]' : ''}`}>
-                <div>
-                  <p className={`text-[15px] font-semibold ${i === 2 ? 'text-[var(--color-primary)]' : 'text-[var(--color-text-primary)]'}`}>{tier.name}</p>
-                  <p className="text-[11px] text-[var(--color-text-muted)] mt-0.5">{tier.plan}</p>
-                </div>
-                <div>
-                  <p className="text-[14px] text-[var(--color-accent-green)] font-semibold">{tier.response}</p>
-                  <p className="text-[11px] text-[var(--color-text-muted)] mt-0.5">{tier.hours}</p>
-                </div>
-                <div className="text-[13px] text-[var(--color-text-secondary)]">{tier.channels}</div>
-                <div className="text-[14px] font-semibold text-[var(--color-text-primary)]">{tier.sla}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Partners */}
-      <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[900px] mx-auto">
-          <div className="flex items-center gap-2 mb-8">
-            <Users2 size={20} className="text-[var(--color-primary)]" />
-            <h2 className="text-[24px] font-semibold text-[var(--color-text-primary)]">Certified Partners</h2>
-          </div>
-          <p className="text-[var(--color-text-secondary)] mb-6">
-            Don't need a full professional services engagement? Our network of 120+ certified implementation partners spans 18 countries, offering local expertise and language support.
-          </p>
-          <Link to="/contact">
-            <Button variant="secondary" size="md">Find a Partner Near You <ArrowUpRight size={16} /></Button>
-          </Link>
         </div>
       </section>
 

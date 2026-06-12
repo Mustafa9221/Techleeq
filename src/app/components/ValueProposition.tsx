@@ -17,8 +17,8 @@ const stats = [
 
 export function ValueProposition() {
   return (
-    <section className="py-[120px] px-[20px] md:px-[40px] bg-[var(--color-bg-base)]">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-base)] snap-start px-[20px] md:px-[40px] py-8 md:py-12">
+      <div className="max-w-[1280px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left - Text Content */}
           <div>

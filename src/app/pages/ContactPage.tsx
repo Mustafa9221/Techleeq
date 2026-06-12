@@ -53,25 +53,6 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* Quick contact options */}
-      <section className="px-[20px] md:px-[40px] pb-[60px]">
-        <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
-          {[
-            { icon: MessageSquare, title: 'Live Chat', desc: 'Available weekdays 9am–6pm WAT', action: 'Start chat', color: 'var(--color-primary)' },
-            { icon: Headphones, title: 'Talk to Sales', desc: 'Book a 30-min discovery call', action: 'Schedule call', color: 'var(--color-accent-teal)' },
-            { icon: Users, title: 'Enterprise Sales', desc: 'For teams of 50+ employees', action: 'Contact us', color: 'var(--color-accent-violet)' },
-          ].map(({ icon: Icon, title, desc, action, color }) => (
-            <div key={title} className="group p-6 rounded-[var(--radius-xl)] border border-[var(--color-bg-border)] bg-[var(--color-bg-surface)] hover:border-[rgba(10,132,255,0.3)] transition-all cursor-pointer text-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: `color-mix(in srgb, ${color} 15%, transparent)` }}>
-                <Icon size={22} style={{ color }} />
-              </div>
-              <h4 className="text-[15px] font-semibold text-[var(--color-text-primary)] mb-1">{title}</h4>
-              <p className="text-[13px] text-[var(--color-text-muted)] mb-3">{desc}</p>
-              <span className="text-[13px] font-medium" style={{ color }}>{action} →</span>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Main contact section */}
       <section className="px-[20px] md:px-[40px] pb-[80px]">
@@ -168,26 +149,6 @@ export function ContactPage() {
 
           {/* Sidebar info */}
           <div className="flex flex-col gap-6">
-            {/* Response time */}
-            <div className="p-6 rounded-[var(--radius-xl)] border border-[var(--color-bg-border)] bg-[var(--color-bg-surface)]">
-              <div className="flex items-center gap-2 mb-4">
-                <Clock size={18} className="text-[var(--color-primary)]" />
-                <h4 className="text-[15px] font-semibold text-[var(--color-text-primary)]">Response times</h4>
-              </div>
-              <div className="space-y-3">
-                {[
-                  { type: 'General inquiries', time: 'Within 24 hours' },
-                  { type: 'Sales & pricing', time: 'Within 4 hours' },
-                  { type: 'Technical support', time: 'Within 2 hours' },
-                  { type: 'Enterprise & urgent', time: 'Within 1 hour' },
-                ].map((r) => (
-                  <div key={r.type} className="flex justify-between items-center">
-                    <span className="text-[13px] text-[var(--color-text-secondary)]">{r.type}</span>
-                    <span className="text-[12px] text-[var(--color-accent-green)] font-medium">{r.time}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Offices */}
             {offices.map((office) => (

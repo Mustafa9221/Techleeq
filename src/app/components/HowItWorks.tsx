@@ -29,8 +29,8 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-[100px] px-[20px] md:px-[40px] bg-[var(--color-bg-base)]">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-base)] snap-start px-[20px] md:px-[40px] py-8 md:py-12">
+      <div className="max-w-[1280px] mx-auto w-full">
         {/* Section Header */}
         <div className="text-center max-w-[700px] mx-auto mb-16">
           <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-primary)] font-semibold mb-4">
@@ -46,8 +46,7 @@ export function HowItWorks() {
 
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden lg:block absolute top-[32px] left-[10%] right-[10%] h-[2px] bg-[var(--color-bg-border)] border-t-2 border-dashed border-[var(--color-bg-border)]"></div>
+
 
           {steps.map((step, index) => (
             <div key={step.number} className="relative">
@@ -76,10 +75,7 @@ export function HowItWorks() {
                 </p>
               </div>
 
-              {/* Vertical Connector Line (Mobile) */}
-              {index < steps.length - 1 && (
-                <div className="lg:hidden w-[2px] h-12 mx-auto my-4 border-l-2 border-dashed border-[var(--color-bg-border)]"></div>
-              )}
+
             </div>
           ))}
         </div>

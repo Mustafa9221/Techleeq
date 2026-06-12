@@ -1,10 +1,10 @@
 import { Link } from 'react-router';
 import { Button } from './Button';
-import { Download, Phone } from 'lucide-react';
+import { Phone, Linkedin, Twitter, Youtube, Github } from 'lucide-react';
 
 export function CTABanner() {
   return (
-    <section className="py-[100px] px-[20px] md:px-[40px] bg-[var(--color-bg-surface)] relative overflow-hidden">
+    <section className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-8 md:py-12 relative">
       {/* Animated Mesh Gradient Background */}
       <div className="absolute inset-0 gradient-glow opacity-30 animate-pulse" style={{ animationDuration: '10s' }}></div>
 
@@ -27,18 +27,25 @@ export function CTABanner() {
           Join 500+ companies that run smarter on TechLeeq.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link to="/download">
-            <Button variant="primary" size="xl" icon={<Download size={20} />} iconPosition="left">
-              Download Free Trial
-            </Button>
-          </Link>
+        {/* CTA Buttons & Socials */}
+        <div className="flex flex-col items-center justify-center gap-8">
           <Link to="/contact">
-            <Button variant="secondary" size="xl" icon={<Phone size={20} />} iconPosition="left">
+            <Button variant="primary" size="xl" icon={<Phone size={20} />} iconPosition="left">
               Talk to Sales
             </Button>
           </Link>
+          
+          <div className="flex items-center gap-4 mt-2">
+            {[Linkedin, Twitter, Youtube, Github].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                className="w-[48px] h-[48px] rounded-full bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-all duration-[var(--duration-base)] flex items-center justify-center shadow-sm"
+              >
+                <Icon size={20} />
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Trust Signal */}

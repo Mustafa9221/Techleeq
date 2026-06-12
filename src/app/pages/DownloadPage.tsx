@@ -116,47 +116,6 @@ export function DownloadPage() {
               </div>
             </div>
 
-            {/* Referral code section */}
-            <div className="border-b border-[var(--color-bg-border)] p-8">
-              <div className="flex items-center gap-2 mb-4">
-                <Gift size={18} className="text-[var(--color-accent-amber)]" />
-                <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] font-semibold">Have a referral code?</p>
-              </div>
-              {referralValid === true && (referralCode || referralInput) ? (
-                <div className="flex items-center gap-3 p-4 rounded-[var(--radius-lg)] bg-[rgba(34,197,94,0.08)] border border-[rgba(34,197,94,0.25)]">
-                  <CheckCircle2 size={20} className="text-[var(--color-accent-green)] shrink-0" />
-                  <div>
-                    <p className="text-[14px] font-semibold text-[var(--color-accent-green)]">Referral code applied!</p>
-                    <p className="text-[12px] text-[var(--color-text-secondary)] mt-0.5">
-                      Code <span className="font-mono text-[var(--color-text-primary)]">{referralCode || referralInput}</span> — you get 20% off your first year.
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex gap-3">
-                  <input
-                    type="text"
-                    value={referralInput}
-                    onChange={(e) => {
-                      setReferralInput(e.target.value.toUpperCase());
-                      setReferralValid(null);
-                    }}
-                    placeholder="e.g. TL-AB1234"
-                    className="flex-1 h-[44px] px-4 bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] rounded-[var(--radius-md)] text-[14px] font-mono text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] transition-all"
-                    onKeyDown={(e) => e.key === 'Enter' && validateReferral()}
-                  />
-                  <button
-                    onClick={validateReferral}
-                    className="px-5 h-[44px] rounded-[var(--radius-md)] bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] text-[14px] font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-primary)] transition-all"
-                  >
-                    Apply
-                  </button>
-                </div>
-              )}
-              {referralValid === false && (
-                <p className="text-[12px] text-[var(--color-accent-red)] mt-2">Invalid code. Please check and try again.</p>
-              )}
-            </div>
 
             {/* Download button area */}
             <div className="p-8">
@@ -240,33 +199,7 @@ export function DownloadPage() {
         </div>
       </section>
 
-      {/* Referral share section */}
-      <section className="px-[20px] md:px-[40px] pb-[100px]">
-        <div className="max-w-[800px] mx-auto">
-          <div className="rounded-[var(--radius-2xl)] border border-[rgba(245,166,35,0.3)] bg-[rgba(245,166,35,0.05)] p-10 text-center">
-            <div className="w-14 h-14 rounded-full bg-[rgba(245,166,35,0.15)] flex items-center justify-center mx-auto mb-5">
-              <Gift size={26} className="text-[var(--color-accent-amber)]" />
-            </div>
-            <h2 className="text-[26px] font-bold text-[var(--color-text-primary)] mb-2">Share & earn free months</h2>
-            <p className="text-[var(--color-text-secondary)] mb-6">
-              Refer a friend or colleague. When they subscribe, you both get rewarded — you get 3 months free, they get 20% off.
-            </p>
-            <div className="flex items-center gap-3 max-w-[480px] mx-auto mb-6">
-              <div className="flex-1 h-[44px] px-4 bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] rounded-[var(--radius-md)] flex items-center font-mono text-[13px] text-[var(--color-text-secondary)] overflow-hidden">
-                <span className="truncate">techleeq.com/download?ref={userReferralCode}</span>
-              </div>
-              <button
-                onClick={copyReferral}
-                className="h-[44px] px-4 rounded-[var(--radius-md)] bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] hover:border-[var(--color-primary)] transition-all flex items-center gap-2 text-[13px] text-[var(--color-text-secondary)]"
-              >
-                {copied ? <Check size={16} className="text-[var(--color-accent-green)]" /> : <Copy size={16} />}
-                {copied ? 'Copied!' : 'Copy'}
-              </button>
-            </div>
-            <p className="text-[12px] text-[var(--color-text-muted)]">Your referral code: <span className="font-mono text-[var(--color-accent-amber)] font-semibold">{userReferralCode}</span></p>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }

@@ -6,22 +6,13 @@ import { Button } from './Button';
 const companyLinks = [
   { label: 'About Us', to: '/about' },
   { label: 'Careers', to: '/careers' },
-  { label: 'Blog', to: '#' },
-  { label: 'Press', to: '#' },
-  { label: 'Partners', to: '#' },
 ];
 const productLinks = [
-  { label: 'Features', to: '/products' },
-  { label: 'Pricing', to: '/pricing' },
-  { label: 'Download', to: '/download' },
-  { label: 'Changelog', to: '#' },
-  { label: 'Documentation', to: '#' },
+  { label: 'Products', to: '/products' },
 ];
 const supportLinks = [
   { label: 'Help Center', to: '#' },
   { label: 'Contact Us', to: '/contact' },
-  { label: 'System Status', to: '#' },
-  { label: 'Security', to: '#' },
   { label: 'Privacy Policy', to: '/privacy' },
 ];
 
@@ -57,13 +48,13 @@ function FooterAccordion({ title, links }: { title: string; links: typeof compan
 
 export function Footer() {
   return (
-    <footer className="bg-[#060A10] border-t border-[var(--color-bg-border)]
-      pt-[48px] md:pt-[64px] lg:pt-[80px]
-      pb-[32px] md:pb-[40px]
+    <footer className="bg-[#060A10] border-t border-[var(--color-bg-border)] snap-start
+      pt-[28px] md:pt-[36px] lg:pt-[44px]
+      pb-[20px] md:pb-[24px]
       px-[20px] md:px-[40px]">
       <div className="max-w-[1280px] mx-auto">
         {/* Desktop & Tablet Grid (768px+) */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_1.4fr] gap-8 lg:gap-10 mb-12">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_1.4fr] gap-8 lg:gap-10 mb-6">
           {/* Brand Column */}
           <div className="md:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center mb-4">

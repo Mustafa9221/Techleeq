@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { MapPin, Clock, Briefcase, ChevronDown, ChevronUp, ArrowRight, Heart, Globe2, TrendingUp, Coffee } from 'lucide-react';
+import { MapPin, Clock, Briefcase, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 import { Button } from '../components/Button';
 
 const departments = ['All', 'Engineering', 'Product', 'Sales', 'Customer Success', 'Design', 'Operations'];
@@ -16,15 +16,6 @@ const jobs = [
   { id: 8, title: 'DevOps Engineer', dept: 'Engineering', location: 'Remote', type: 'Full-time', level: 'Mid', desc: 'Manage CI/CD pipelines, cloud infrastructure, and deployment tooling for our desktop app release process.' },
   { id: 9, title: 'Sales Development Representative', dept: 'Sales', location: 'Lagos', type: 'Full-time', level: 'Junior', desc: 'Generate qualified pipeline for the enterprise sales team. Outbound prospecting, cold calling, and demo scheduling.' },
   { id: 10, title: 'Implementation Specialist', dept: 'Customer Success', location: 'Accra / Remote', type: 'Full-time', level: 'Mid', desc: 'Lead new customer implementations from kickoff to go-live. Strong project management and technical aptitude required.' },
-];
-
-const perks = [
-  { icon: Globe2, title: 'Remote-first culture', desc: 'Work from anywhere in Africa or Europe. Our team spans 12 countries.' },
-  { icon: TrendingUp, title: 'Equity for everyone', desc: 'Every full-time employee receives stock options, not just executives.' },
-  { icon: Heart, title: 'Comprehensive health cover', desc: 'Full medical, dental, and vision for you and your dependants.' },
-  { icon: Coffee, title: 'Learning budget', desc: '$2,000/year for courses, conferences, books, and certifications.' },
-  { icon: Clock, title: 'Flexible hours', desc: 'We care about outcomes, not when you start your day.' },
-  { icon: Briefcase, title: 'Home office stipend', desc: '$1,500 one-time setup allowance for new hires.' },
 ];
 
 export function CareersPage() {
@@ -66,26 +57,6 @@ export function CareersPage() {
               <p className="text-[12px] text-[var(--color-text-muted)] mt-1">{s.l}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Perks */}
-      <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[1100px] mx-auto">
-          <h2 className="text-[28px] font-bold text-[var(--color-text-primary)] mb-8 text-center" style={{ letterSpacing: 'var(--tracking-tight)' }}>Why TechLeeq?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {perks.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex gap-4 p-6 rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)]">
-                <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[rgba(10,132,255,0.12)] flex items-center justify-center shrink-0">
-                  <Icon size={18} className="text-[var(--color-primary)]" />
-                </div>
-                <div>
-                  <h4 className="text-[14px] font-semibold text-[var(--color-text-primary)] mb-1">{title}</h4>
-                  <p className="text-[13px] text-[var(--color-text-secondary)]">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

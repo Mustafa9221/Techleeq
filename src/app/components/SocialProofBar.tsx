@@ -5,8 +5,8 @@ export function SocialProofBar() {
   ];
 
   return (
-    <section className="py-16 px-[20px] md:px-[40px] bg-[var(--color-bg-surface)] border-y border-[var(--color-bg-border)]">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="py-12 md:py-16 px-[20px] md:px-[40px] bg-[var(--color-bg-surface)] border-y border-[var(--color-bg-border)] snap-start w-full">
+      <div className="max-w-[1280px] mx-auto w-full">
         <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] text-center mb-8">
           Trusted by growing businesses across industries
         </p>

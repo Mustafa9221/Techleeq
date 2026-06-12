@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import { Button } from './Button';
+import logoUrl from '../../../assets/logo.png';
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Products', href: '/products' },
-  { label: 'Pricing', href: '/pricing' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -40,10 +40,13 @@ export function Navigation() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2 transition-all duration-[var(--duration-fast)] hover:brightness-110 z-[1001]"
+            className="flex items-center gap-2 transition-all duration-[var(--duration-fast)] hover:brightness-110 z-[1001] shrink-0"
           >
-            <span className="font-['Syne'] font-bold text-[24px] md:text-[28px] text-[var(--color-text-primary)]">Tech</span>
-            <span className="font-['Syne'] font-bold text-[24px] md:text-[28px] text-[var(--color-primary)]">leeq</span>
+            <img src={logoUrl} alt="Techleeq Logo" style={{ height: '36px', width: 'auto', maxWidth: '80px', display: 'block', objectFit: 'contain' }} />
+            <div className="flex items-center tracking-tight">
+              <span className="font-['Syne'] font-bold text-[20px] md:text-[24px] text-[var(--color-text-primary)]">Tech&nbsp;</span>
+              <span className="font-['Syne'] font-bold text-[20px] md:text-[24px] text-[var(--color-primary)]">leeq</span>
+            </div>
           </Link>
 
           {/* Desktop/Tablet nav links (hidden on mobile) */}
@@ -52,9 +55,8 @@ export function Navigation() {
               <Link
                 key={link.label}
                 to={link.href}
-                className={`font-['Geist'] font-medium text-[13px] xl:text-[14px] tracking-[var(--tracking-wide)] transition-all duration-[var(--duration-base)] relative group ${
-                  isActive(link.href) ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
-                }`}
+                className={`font-['Geist'] font-medium text-[13px] xl:text-[14px] tracking-[var(--tracking-wide)] transition-all duration-[var(--duration-base)] relative group ${isActive(link.href) ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
+                  }`}
               >
                 {link.label}
                 <span className={`absolute bottom-[-4px] left-0 h-[2px] bg-[var(--color-primary)] transition-all duration-[var(--duration-base)] ${isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
@@ -64,15 +66,14 @@ export function Navigation() {
 
           {/* CTA Buttons (desktop/tablet) */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="secondary" size="sm" className="text-[13px] xl:text-[14px] px-[12px] xl:px-[14px] py-[6px] xl:py-[8px]">Login</Button>
-            <Link to="/download">
+            <Link to="/contact">
               <Button variant="primary" size="sm" className="text-[13px] xl:text-[14px] px-[12px] xl:px-[14px] py-[6px] xl:py-[8px]">Get Started Free</Button>
             </Link>
           </div>
 
           {/* Tablet: show Get Started button + hamburger */}
           <div className="hidden md:flex lg:hidden items-center gap-3">
-            <Link to="/download">
+            <Link to="/contact">
               <Button variant="primary" size="sm" className="text-[13px] px-[14px] py-[8px]">Get Started Free</Button>
             </Link>
             <button
@@ -112,11 +113,10 @@ export function Navigation() {
                   key={link.label}
                   to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`h-[56px] px-[20px] flex items-center font-['Geist'] font-medium text-[18px] border-b border-[var(--color-bg-border)] transition-all ${
-                    isActive(link.href)
+                  className={`h-[56px] px-[20px] flex items-center font-['Geist'] font-medium text-[18px] border-b border-[var(--color-bg-border)] transition-all ${isActive(link.href)
                       ? 'text-[var(--color-primary)] bg-[rgba(10,132,255,0.08)]'
                       : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-surface)]'
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -125,8 +125,7 @@ export function Navigation() {
 
             {/* CTA Buttons at bottom */}
             <div className="flex flex-col gap-4 p-[20px] border-t border-[var(--color-bg-border)]">
-              <Button variant="secondary" size="md" className="w-full h-[52px]">Login</Button>
-              <Link to="/download" onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="primary" size="md" className="w-full h-[52px]">Get Started Free</Button>
               </Link>
             </div>
