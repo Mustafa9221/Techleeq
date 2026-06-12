@@ -17,7 +17,7 @@ const stats = [
 
 export function ValueProposition() {
   return (
-    <section className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-base)] snap-start px-[20px] md:px-[40px] py-8 md:py-12">
+    <section className="max-md:min-h-0 min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-base)] snap-start px-[20px] md:px-[40px] py-20 md:py-12">
       <div className="max-w-[1280px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left - Text Content */}
@@ -25,7 +25,7 @@ export function ValueProposition() {
             <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-primary)] font-semibold mb-4">
               WHY TECHLEEQ
             </p>
-            <h2 className="font-['Syne'] text-[36px] md:text-[40px] font-bold leading-tight text-[var(--color-text-primary)] mb-6">
+            <h2 className="font-['Syne'] text-[40px] md:text-[40px] font-bold leading-tight text-[var(--color-text-primary)] mb-6">
               Everything your business needs. One platform.
             </h2>
             <div className="space-y-4 mb-8 text-[17px] text-[var(--color-text-secondary)] leading-relaxed">

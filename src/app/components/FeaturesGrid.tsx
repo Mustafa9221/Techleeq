@@ -43,14 +43,14 @@ const features = [
 
 export function FeaturesGrid() {
   return (
-    <section id="features" className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-8 md:py-12">
+    <section id="features" className="max-md:min-h-0 min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-20 md:py-12">
       <div className="max-w-[1280px] mx-auto w-full">
         {/* Section Header */}
         <div className="text-center max-w-[700px] mx-auto mb-16">
           <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-primary)] font-semibold mb-4">
             PRODUCTS
           </p>
-          <h2 className="font-['Syne'] text-[36px] md:text-[40px] font-bold leading-tight text-[var(--color-text-primary)] mb-4">
+          <h2 className="font-['Syne'] text-[40px] md:text-[40px] font-bold leading-tight text-[var(--color-text-primary)] mb-4">
             Built for how your business actually works
           </h2>
           <p className="text-[17px] text-[var(--color-text-secondary)] leading-relaxed">

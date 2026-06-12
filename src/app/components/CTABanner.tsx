@@ -4,7 +4,7 @@ import { Phone, Linkedin, Twitter, Youtube, Github } from 'lucide-react';
 
 export function CTABanner() {
   return (
-    <section className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-8 md:py-12 relative">
+    <section className="max-md:min-h-0 min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-20 md:py-12 relative">
       {/* Animated Mesh Gradient Background */}
       <div className="absolute inset-0 gradient-glow opacity-30 animate-pulse" style={{ animationDuration: '10s' }}></div>
 
@@ -18,7 +18,7 @@ export function CTABanner() {
 
       <div className="max-w-[900px] mx-auto text-center relative z-10">
         {/* Headline */}
-        <h2 className="font-['Syne'] text-[42px] md:text-[54px] font-bold leading-tight text-[var(--color-text-primary)] mb-6">
+        <h2 className="font-['Syne'] text-[48px] md:text-[54px] font-bold leading-tight text-[var(--color-text-primary)] mb-6">
           Ready to simplify your business?
         </h2>
 

@@ -11,7 +11,7 @@ export function HeroSection() {
     <section
       id="home"
       className="relative gradient-hero
-        min-h-[100dvh] w-full pt-[60px] md:pt-[68px]
+        max-md:min-h-0 min-h-[100dvh] w-full pt-[120px] md:pt-[68px]
         flex flex-col items-center justify-center snap-start"
     >
       {/* Animated Radial Glow Background - static on mobile */}
@@ -78,7 +78,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.08 }}
           className="font-['Syne'] font-extrabold
-            text-[36px] leading-[1.15]
+            text-[42px] leading-[1.15]
             md:text-[44px] md:leading-[1.1]
             lg:text-[56px]
             xl:text-[68px]
@@ -95,7 +95,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.16 }}
           className="font-['Geist']
-            text-[15px] md:text-[16px] lg:text-[17px] xl:text-[19px]
+            text-[16px] md:text-[16px] lg:text-[17px] xl:text-[19px]
             leading-[1.65] text-[var(--color-text-secondary)]
             max-w-full md:max-w-[600px] mx-auto mb-6 md:mb-8"
         >
