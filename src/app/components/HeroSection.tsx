@@ -11,7 +11,7 @@ function AnimatedGraphic() {
       <motion.div
         className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgba(10,132,255,0.18) 0%, rgba(124,92,252,0.10) 50%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(10,132,255,0.18) 0%, rgba(0,95,204,0.10) 50%, transparent 70%)',
           filter: 'blur(60px)',
         }}
         animate={{ scale: [1, 1.12, 1], opacity: [0.6, 1, 0.6] }}
@@ -21,7 +21,7 @@ function AnimatedGraphic() {
       <motion.div
         className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0,95,204,0.15) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
         animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.8, 0.4] }}
@@ -32,7 +32,7 @@ function AnimatedGraphic() {
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[420px] h-[420px] opacity-[0.10] hidden xl:block">
         <svg viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="240" cy="240" r="200" stroke="#0A84FF" strokeWidth="1" strokeDasharray="6 10" />
-          <circle cx="240" cy="240" r="150" stroke="#7C5CFC" strokeWidth="0.8" strokeDasharray="4 8" />
+          <circle cx="240" cy="240" r="150" stroke="#005FCC" strokeWidth="0.8" strokeDasharray="4 8" />
           <circle cx="240" cy="240" r="100" stroke="#00D4C8" strokeWidth="0.6" />
           <circle cx="240" cy="240" r="50" fill="rgba(10,132,255,0.08)" stroke="#0A84FF" strokeWidth="1.5" />
           {[0, 60, 120, 180, 240, 300].map((deg, i) => {
@@ -41,12 +41,12 @@ function AnimatedGraphic() {
           })}
           {[30, 90, 150, 210, 270, 330].map((deg, i) => {
             const rad = (deg * Math.PI) / 180;
-            return <circle key={i} cx={240 + 150 * Math.cos(rad)} cy={240 + 150 * Math.sin(rad)} r="3" fill="#7C5CFC" opacity="0.8" />;
+            return <circle key={i} cx={240 + 150 * Math.cos(rad)} cy={240 + 150 * Math.sin(rad)} r="3" fill="#005FCC" opacity="0.8" />;
           })}
           <line x1="240" y1="40" x2="240" y2="90" stroke="#0A84FF" strokeWidth="0.8" opacity="0.5" />
           <line x1="240" y1="390" x2="240" y2="440" stroke="#0A84FF" strokeWidth="0.8" opacity="0.5" />
-          <line x1="40" y1="240" x2="90" y2="240" stroke="#7C5CFC" strokeWidth="0.8" opacity="0.5" />
-          <line x1="390" y1="240" x2="440" y2="240" stroke="#7C5CFC" strokeWidth="0.8" opacity="0.5" />
+          <line x1="40" y1="240" x2="90" y2="240" stroke="#005FCC" strokeWidth="0.8" opacity="0.5" />
+          <line x1="390" y1="240" x2="440" y2="240" stroke="#005FCC" strokeWidth="0.8" opacity="0.5" />
         </svg>
       </div>
 
@@ -58,7 +58,7 @@ function AnimatedGraphic() {
           style={{
             width: i % 3 === 0 ? '3px' : '2px',
             height: i % 3 === 0 ? '3px' : '2px',
-            background: i % 2 === 0 ? '#0A84FF' : '#7C5CFC',
+            background: i % 2 === 0 ? '#0A84FF' : '#005FCC',
             left: `${(i * 6.2) % 100}%`,
             top: `${(i * 7.1 + 5) % 95}%`,
           }}
@@ -164,14 +164,11 @@ export function HeroSection() {
         className="relative z-10 w-full mx-auto text-center flex flex-col items-center justify-center"
         style={{
           flex: 1,
-          /* Top padding clears the fixed navbar (60-68px) */
-          paddingTop: 'clamp(68px, 11vh, 96px)',
-          paddingBottom: 'clamp(8px, 1.5vh, 16px)',
+          paddingTop: '68px', /* Just enough to clear the fixed navbar */
           paddingLeft: 'clamp(16px, 5vw, 80px)',
           paddingRight: 'clamp(16px, 5vw, 80px)',
           maxWidth: '1280px',
-          /* Gap between every child element scales with viewport height */
-          gap: 'clamp(6px, 1.8vh, 18px)',
+          gap: 'clamp(16px, 2vh, 24px)',
         }}
       >
         {/* Badge */}
@@ -230,7 +227,7 @@ export function HeroSection() {
             lineHeight: 1.06,
             letterSpacing: '-0.02em',
             fontSize: 'clamp(28px, min(7vw, 8.5vh), 96px)',
-            background: 'linear-gradient(90deg, #0A84FF 0%, #7C5CFC 100%)',
+            background: 'linear-gradient(90deg, #0A84FF 0%, #005FCC 100%)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -303,9 +300,6 @@ export function HeroSection() {
           Enterprise-grade solutions · Dedicated support · Scalable from day one
         </motion.p>
       </div>
-
-      {/* ── Social proof ticker – pinned at the bottom of the hero ── */}
-      <SocialProofTicker />
     </section>
   );
 }

@@ -43,45 +43,45 @@ const features = [
 
 export function FeaturesGrid() {
   return (
-    <section id="features" className="max-md:min-h-0 min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-20 md:py-12">
+    <section id="features" className="min-h-[100dvh] w-full flex flex-col justify-center bg-[var(--color-bg-surface)] snap-start px-[20px] md:px-[40px] py-12 md:py-[clamp(24px,4vh,48px)]">
       <div className="max-w-[1280px] mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center max-w-[700px] mx-auto mb-16">
-          <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-primary)] font-semibold mb-4">
-            PRODUCTS
+        <div className="text-center max-w-[700px] mx-auto mb-8 md:mb-[clamp(16px,4vh,48px)]">
+          <p className="text-[13px] uppercase tracking-[0.12em] text-[var(--color-primary)] font-semibold mb-2 md:mb-[clamp(8px,2vh,16px)]">
+            OUR PRODUCTS
           </p>
-          <h2 className="font-['Syne'] text-[40px] md:text-[40px] font-bold leading-tight text-[var(--color-text-primary)] mb-4">
-            Built for how your business actually works
+          <h2 className="font-['Syne'] text-[32px] md:text-[clamp(28px,4vh,40px)] font-bold leading-tight text-[var(--color-text-primary)] mb-2 md:mb-[clamp(8px,2vh,16px)]">
+            Our Products
           </h2>
-          <p className="text-[17px] text-[var(--color-text-secondary)] leading-relaxed">
-            Everything you need to run a modern business, packaged into one powerful platform.
+          <p className="text-[15px] md:text-[clamp(14px,2vh,17px)] text-[var(--color-text-secondary)] leading-relaxed">
+            Built for how your business actually works, packaged into one powerful platform.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-[clamp(12px,2vh,24px)]">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group bg-[var(--color-bg-base)] border border-[var(--color-bg-border)] rounded-[var(--radius-xl)] p-[28px] shadow-card hover:border-[rgba(10,132,255,0.4)] hover:-translate-y-1 hover:shadow-glow-blue transition-all duration-[var(--duration-base)] flex flex-col h-full"
+              className="group bg-[var(--color-bg-base)] border border-[var(--color-bg-border)] rounded-[var(--radius-xl)] p-5 md:p-[clamp(16px,2.5vh,28px)] shadow-card hover:border-[rgba(10,132,255,0.4)] hover:-translate-y-1 hover:shadow-glow-blue transition-all duration-[var(--duration-base)] flex flex-col h-full"
             >
               {/* Icon Container */}
-              <div className="w-[48px] h-[48px] rounded-[var(--radius-lg)] bg-[var(--color-bg-elevated)] flex items-center justify-center mb-4 group-hover:bg-[var(--color-primary-glow)] transition-colors">
-                <feature.icon size={24} className="text-[var(--color-primary)]" />
+              <div className="w-[40px] h-[40px] md:w-[clamp(32px,5vh,48px)] md:h-[clamp(32px,5vh,48px)] rounded-[var(--radius-lg)] bg-[var(--color-bg-elevated)] flex items-center justify-center mb-3 md:mb-[clamp(8px,1.5vh,16px)] group-hover:bg-[var(--color-primary-glow)] transition-colors">
+                <feature.icon size={20} className="text-[var(--color-primary)]" />
               </div>
 
               {/* Title */}
-              <h3 className="font-['DM_Sans'] text-[18px] font-semibold text-[var(--color-text-primary)] mb-3">
+              <h3 className="font-['DM_Sans'] text-[16px] md:text-[clamp(15px,2vh,18px)] font-semibold text-[var(--color-text-primary)] mb-2 md:mb-[clamp(4px,1vh,12px)]">
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-[14px] text-[var(--color-text-muted)] leading-[1.6] mb-4">
+              <p className="text-[13px] md:text-[clamp(12px,1.8vh,14px)] text-[var(--color-text-muted)] leading-[1.5] mb-3 md:mb-[clamp(8px,1.5vh,16px)]">
                 {feature.description}
               </p>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-3 mt-auto pt-4">
+              <div className="flex items-center gap-2 md:gap-[clamp(8px,1vh,12px)] mt-auto pt-3 md:pt-[clamp(8px,1.5vh,16px)]">
                 <Link to="/download" className="w-full">
                   <Button variant="primary" size="sm" className="w-full">
                     Buy
@@ -98,7 +98,7 @@ export function FeaturesGrid() {
         </div>
 
         {/* View All Button */}
-        <div className="mt-16 flex justify-center">
+        <div className="mt-8 md:mt-[clamp(16px,4vh,48px)] flex justify-center">
           <Link to="/products">
             <Button variant="secondary" size="lg" className="px-8 font-semibold">
               See all products

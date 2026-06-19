@@ -20,7 +20,7 @@ export function Button({
   const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium transition-all duration-[var(--duration-base)] ease-[var(--ease-out)] disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantStyles = {
-    primary: 'gradient-cta text-white rounded-full hover:brightness-110 glow-blue active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-base)]',
+    primary: 'bg-gradient-to-r from-[#003399] to-[#0A84FF] text-white rounded-full hover:brightness-110 glow-blue active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-base)]',
     secondary: 'bg-transparent border border-[var(--color-bg-border)] text-[var(--color-text-primary)] rounded-full hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-glow)] active:scale-[0.97]',
     tertiary: 'text-[var(--color-primary)] hover:underline',
     danger: 'bg-[var(--color-accent-red)] text-white rounded-full hover:brightness-110 active:scale-[0.97]',

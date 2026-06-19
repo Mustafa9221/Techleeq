@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from './Button';
+import { useTheme } from '../contexts/ThemeContext';
 import logoUrl from '../../../assets/logo.png';
 
 const navLinks = [
@@ -16,6 +17,7 @@ const navLinks = [
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   const isActive = (href: string) =>
     href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
@@ -33,9 +35,10 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[1000] bg-[rgba(244,247,255,0.92)] backdrop-blur-nav border-b border-[rgba(200,213,238,0.8)]
+      <nav className="fixed top-0 left-0 right-0 z-[1000] backdrop-blur-nav border-b border-[var(--color-bg-border)]
         h-[60px] md:h-[68px]
-        px-[20px] md:px-[28px] lg:px-[40px]">
+        px-[20px] md:px-[28px] lg:px-[40px]"
+        style={{ backgroundColor: 'var(--color-bg-base)' }}>
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between">
           {/* Logo */}
           <Link
@@ -64,15 +67,29 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA Buttons (desktop/tablet) */}
+          {/* CTA Buttons & Theme Toggle (desktop/tablet) */}
           <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="w-[36px] h-[36px] rounded-full flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-primary)] transition-all"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
             <Link to="/products">
               <Button variant="primary" size="sm" className="text-[13px] xl:text-[14px] px-[12px] xl:px-[14px] py-[6px] xl:py-[8px]">Get Started</Button>
             </Link>
           </div>
 
-          {/* Tablet: show Get Started button + hamburger */}
+          {/* Tablet: show Get Started button + theme + hamburger */}
           <div className="hidden md:flex lg:hidden items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="w-[36px] h-[36px] rounded-full flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-primary)] transition-all"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
             <Link to="/products">
               <Button variant="primary" size="sm" className="text-[13px] px-[14px] py-[8px]">Get Started</Button>
             </Link>
@@ -85,22 +102,32 @@ export function Navigation() {
             </button>
           </div>
 
-          {/* Mobile: only hamburger */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden touch-target flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors z-[1001]"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: theme + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="w-[36px] h-[36px] rounded-full flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-primary)] transition-all"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="touch-target flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors z-[1001]"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile/Tablet Full-Screen Overlay Menu */}
       {mobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-[999] bg-[rgba(244,247,255,0.98)] backdrop-blur-nav animate-[slideDown_300ms_ease-out]"
+          className="lg:hidden fixed inset-0 z-[999] backdrop-blur-nav animate-[slideDown_300ms_ease-out]"
           style={{
+            backgroundColor: 'var(--color-bg-base)',
             animation: 'slideDown 300ms ease-out',
             paddingTop: '68px',
           }}

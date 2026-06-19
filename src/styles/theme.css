@@ -29,7 +29,7 @@
 
   /* ===== GRADIENTS ===== */
   --gradient-hero: linear-gradient(135deg, #EBF0FF 0%, #F4F7FF 60%, #E6EEFF 100%);
-  --gradient-cta: linear-gradient(90deg, #0A84FF 0%, #7C5CFC 100%);
+  --gradient-cta: linear-gradient(90deg, #0A84FF 0%, #005FCC 100%);
   --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #EBF0FF 100%);
   --gradient-glow: radial-gradient(ellipse at center, rgba(10, 132, 255, 0.14) 0%, transparent 70%);
 
@@ -64,6 +64,27 @@
   --shadow-glow-blue: 0 0 32px rgba(10, 132, 255, 0.20), 0 0 64px rgba(10, 132, 255, 0.08);
   --shadow-glow-violet: 0 0 32px rgba(124, 92, 252, 0.18);
   --shadow-card: 0 2px 1px rgba(255, 255, 255, 0.9) inset, 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] {
+  --color-primary-glow: rgba(10, 132, 255, 0.18);
+  --color-bg-base: #080C14;
+  --color-bg-surface: #0F1520;
+  --color-bg-elevated: #162032;
+  --color-bg-border: #1E2D45;
+  --color-text-primary: #F0F6FF;
+  --color-text-secondary: #8BA3C7;
+  --color-text-muted: #4D6480;
+  --gradient-hero: linear-gradient(135deg, #080C14 0%, #0F1D35 60%, #051428 100%);
+  --gradient-card: linear-gradient(145deg, #0F1520 0%, #162032 100%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(10, 132, 255, 0.12) 0%, transparent 70%);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow-blue: 0 0 32px rgba(10, 132, 255, 0.25), 0 0 64px rgba(10, 132, 255, 0.1);
+  --shadow-glow-violet: 0 0 32px rgba(124, 92, 252, 0.25);
+  --shadow-card: 0 2px 1px rgba(255, 255, 255, 0.04) inset, 0 8px 32px rgba(0, 0, 0, 0.5);
+}
 
   /* ===== ANIMATION TIMING ===== */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -175,6 +196,7 @@
     -moz-osx-font-smoothing: grayscale;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   body::-webkit-scrollbar {
@@ -213,7 +235,7 @@
   }
 
   .gradient-cta {
-    background: var(--gradient-cta);
+    background: #005FCC;
   }
 
   .gradient-card {
@@ -225,7 +247,7 @@
   }
 
   .gradient-text {
-    background: var(--gradient-cta);
+    background: #005FCC;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
