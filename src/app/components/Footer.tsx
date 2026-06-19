@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Linkedin, Twitter, Youtube, Github, ChevronDown } from 'lucide-react';
+import { Linkedin, Instagram, Facebook, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router';
 import { Button } from './Button';
 
@@ -62,10 +62,10 @@ export function Footer() {
               <span className="font-['Syne'] font-bold text-[24px] text-[var(--color-primary)]">leeq</span>
             </Link>
             <p className="text-[14px] text-[var(--color-text-muted)] mb-6 leading-relaxed">
-              Enterprise-grade software that simplifies business operations.
+              Custom digital solutions where creativity meets technology.
             </p>
             <div className="flex items-center gap-3">
-              {[Linkedin, Twitter, Youtube, Github].map((Icon, i) => (
+              {[Linkedin, Instagram, Facebook].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
@@ -143,10 +143,10 @@ export function Footer() {
               <span className="font-['Syne'] font-bold text-[24px] text-[var(--color-primary)]">leeq</span>
             </Link>
             <p className="text-[14px] text-[var(--color-text-muted)] mb-6 leading-relaxed">
-              Enterprise-grade software that simplifies business operations.
+              Custom digital solutions where creativity meets technology.
             </p>
             <div className="flex items-center gap-3">
-              {[Linkedin, Twitter, Youtube, Github].map((Icon, i) => (
+              {[Linkedin, Instagram, Facebook].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
@@ -182,7 +182,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[var(--color-bg-border)] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[13px] text-[var(--color-text-muted)] text-center md:text-left">© 2025 TechLeeq. All rights reserved.</p>
+          <p className="text-[13px] text-[var(--color-text-muted)] text-center md:text-left">© 2026 Techleeq. All rights reserved.</p>
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <Link to="/privacy" className="text-[13px] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-[13px] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors">Terms of Service</Link>

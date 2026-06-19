@@ -43,10 +43,10 @@ const team = [
 ];
 
 const stats = [
-  { value: '50,000+', label: 'Businesses served' },
-  { value: '22', label: 'Countries' },
-  { value: '4.8★', label: 'Average rating' },
-  { value: '99.97%', label: 'Uptime SLA' },
+  { value: '500+', label: 'Businesses Served' },
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '4.8★', label: 'Client Rating' },
+  { value: '99.9%', label: 'Uptime SLA' },
 ];
 
 export function AboutPage() {
@@ -155,11 +155,11 @@ export function AboutPage() {
       {/* CTA */}
       <section className="px-[20px] md:px-[40px] pb-[100px]">
         <div className="max-w-[700px] mx-auto text-center">
-          <h2 className="text-[30px] text-[var(--color-text-primary)] mb-4" style={{ letterSpacing: 'var(--tracking-tight)' }}>Ready to join 50,000+ businesses?</h2>
-          <p className="text-[var(--color-text-secondary)] mb-8">Start your free 14-day trial. No credit card required.</p>
+          <h2 className="text-[30px] text-[var(--color-text-primary)] mb-4" style={{ letterSpacing: 'var(--tracking-tight)' }}>Ready to work with us?</h2>
+          <p className="text-[var(--color-text-secondary)] mb-8">Explore our products or reach out to start a conversation — no pressure, just possibilities.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/products"><Button variant="primary" size="lg">Start Free Trial</Button></Link>
-            <Link to="/careers"><Button variant="secondary" size="lg">Join Our Team <ArrowRight size={16} /></Button></Link>
+            <Link to="/products"><Button variant="primary" size="lg">Explore Products</Button></Link>
+            <Link to="/contact"><Button variant="secondary" size="lg">Get In Touch <ArrowRight size={16} /></Button></Link>
           </div>
         </div>
       </section>

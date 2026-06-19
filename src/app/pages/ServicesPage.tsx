@@ -80,21 +80,32 @@ export function ServicesPage() {
       <section className="px-[20px] md:px-[40px] pb-[80px]">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map(({ imageUrl, title, color, desc, features }) => (
-            <div key={title} className="group p-8 rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col overflow-hidden">
-              <div className="w-[calc(100%+4rem)] h-[180px] -mt-8 -mx-8 mb-6 relative max-w-none">
+            <div key={title} className="group rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col overflow-hidden">
+              {/* Image – full-width, clips cleanly via parent overflow-hidden */}
+              <div className="w-full relative flex-shrink-0" style={{ height: '240px' }}>
                 <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-surface)] to-transparent" />
+                {/* Deep bottom fade — blends image seamlessly into card content */}
+                <div
+                  className="absolute bottom-0 left-0 right-0"
+                  style={{
+                    height: '55%',
+                    background: 'linear-gradient(to top, var(--color-bg-surface) 0%, transparent 100%)',
+                  }}
+                />
               </div>
-              <h3 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-3">{title}</h3>
-              <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-5">{desc}</p>
-              <ul className="space-y-2 flex-1">
-                {features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5">
-                    <CheckCircle2 size={14} className="shrink-0 mt-0.5" style={{ color }} />
-                    <span className="text-[13px] text-[var(--color-text-secondary)]">{f}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Content */}
+              <div className="p-6 md:p-8 flex flex-col flex-1">
+                <h3 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-3">{title}</h3>
+                <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-5">{desc}</p>
+                <ul className="space-y-2 flex-1">
+                  {features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5">
+                      <CheckCircle2 size={14} className="shrink-0 mt-0.5" style={{ color }} />
+                      <span className="text-[13px] text-[var(--color-text-secondary)]">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

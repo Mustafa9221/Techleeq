@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Button } from './Button';
-import { Phone, Linkedin, Twitter, Youtube, Github } from 'lucide-react';
+import { Phone, Linkedin, Instagram, Facebook } from 'lucide-react';
 
 export function CTABanner() {
   return (
@@ -24,7 +24,7 @@ export function CTABanner() {
 
         {/* Sub-headline */}
         <p className="text-[18px] md:text-[20px] text-[var(--color-text-secondary)] leading-relaxed mb-10">
-          Join 500+ companies that run smarter on TechLeeq.
+          Join 500+ businesses that trust Techleeq to build and scale their digital vision.
         </p>
 
         {/* CTA Buttons & Socials */}
@@ -36,7 +36,7 @@ export function CTABanner() {
           </Link>
 
           <div className="flex items-center gap-4 mt-2">
-            {[Linkedin, Twitter, Youtube, Github].map((Icon, i) => (
+            {[Linkedin, Instagram, Facebook].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
