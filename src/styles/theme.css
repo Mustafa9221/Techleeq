@@ -76,18 +76,30 @@
   --duration-slowest: 1000ms;
 
   /* ===== TYPOGRAPHY SCALE ===== */
-  --text-xs: 0.75rem;     /* 12px */
-  --text-sm: 0.875rem;    /* 14px */
-  --text-base: 1rem;      /* 16px */
-  --text-lg: 1.125rem;    /* 18px */
-  --text-xl: 1.25rem;     /* 20px */
-  --text-2xl: 1.5rem;     /* 24px */
-  --text-3xl: 1.875rem;   /* 30px */
-  --text-4xl: 2.25rem;    /* 36px */
-  --text-5xl: 3rem;       /* 48px */
-  --text-6xl: 3.75rem;    /* 60px */
-  --text-7xl: 4.5rem;     /* 72px */
-  --text-8xl: 6rem;       /* 96px */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+  --text-5xl: 3rem;
+  /* 48px */
+  --text-6xl: 3.75rem;
+  /* 60px */
+  --text-7xl: 4.5rem;
+  /* 72px */
+  --text-8xl: 6rem;
+  /* 96px */
 
   /* ===== LINE HEIGHTS ===== */
   --leading-tight: 1.2;
@@ -162,24 +174,33 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* Hide scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
   }
 
   body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
   }
 
   /* Universal hide scrollbar just in case there are inner scrollable containers */
   *::-webkit-scrollbar {
     display: none;
   }
+
   * {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'DM Sans', sans-serif;
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-tight);
@@ -276,6 +297,7 @@
 
   /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -291,6 +313,7 @@
       opacity: 0;
       transform: translateY(-20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -301,6 +324,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -311,6 +335,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -333,6 +358,7 @@
 
 /* ===== GLOBAL RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 767px) {
+
   /* Mobile spacing adjustments */
   body {
     font-size: 15px;
@@ -353,7 +379,8 @@
   textarea,
   select {
     min-height: 52px;
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
+    /* Prevents zoom on iOS */
   }
 
   /* Button tap targets */

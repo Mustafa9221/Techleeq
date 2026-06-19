@@ -10,25 +10,25 @@ const values = [
 ];
 
 const team = [
-  { 
-    name: 'Emeka Okafor', 
-    title: 'CEO & Co-Founder', 
+  {
+    name: 'Emeka Okafor',
+    title: 'CEO & Co-Founder',
     bio: 'Former Head of Engineering at Interswitch. 15 years building enterprise software across Africa and Europe.',
     imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop',
     twitter: '#',
     linkedin: '#'
   },
-  { 
-    name: 'Amira Hassan', 
-    title: 'CPO & Co-Founder', 
+  {
+    name: 'Amira Hassan',
+    title: 'CPO & Co-Founder',
     bio: 'Previously led product at Flutterwave. Deep expertise in fintech and business workflow design.',
     imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop',
     twitter: '#',
     linkedin: '#'
   },
-  { 
-    name: 'Kofi Mensah', 
-    title: 'CTO', 
+  {
+    name: 'Kofi Mensah',
+    title: 'CTO',
     bio: 'Distributed systems engineer, ex-Andela. Architect of TechLeeq\'s offline-first sync engine.',
     imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop',
     twitter: '#',

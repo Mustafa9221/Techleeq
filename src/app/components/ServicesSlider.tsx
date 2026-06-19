@@ -89,9 +89,9 @@ export function ServicesSlider() {
 
         {/* Slider Container */}
         <div className="relative max-w-[1100px] mx-auto py-12">
-          
+
           {/* Prev Button */}
-          <button 
+          <button
             onClick={scrollPrev}
             className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all shadow-lg"
           >
@@ -103,19 +103,18 @@ export function ServicesSlider() {
             <div className="flex touch-pan-y" style={{ backfaceVisibility: 'hidden' }}>
               {services.map((service, idx) => {
                 const isActive = idx === selectedIndex;
-                
+
                 return (
-                  <div 
-                    key={service.id} 
+                  <div
+                    key={service.id}
                     className="flex-[0_0_85%] sm:flex-[0_0_60%] md:flex-[0_0_350px] min-w-0 pl-4 pr-4 md:pl-8 md:pr-8 cursor-pointer"
                     onClick={() => scrollTo(idx)}
                   >
-                    <div 
-                      className={`relative bg-[var(--color-bg-surface)] border rounded-[var(--radius-xl)] p-8 flex flex-col h-full transition-all duration-500 ease-out ${
-                        isActive
+                    <div
+                      className={`relative bg-[var(--color-bg-surface)] border rounded-[var(--radius-xl)] p-8 flex flex-col h-full transition-all duration-500 ease-out ${isActive
                           ? 'border-[var(--color-primary)] shadow-glow-blue scale-100 md:scale-110 opacity-100 z-10'
                           : 'border-[var(--color-bg-border)] hover:border-[var(--color-text-muted)] scale-95 opacity-60 z-0'
-                      }`}
+                        }`}
                     >
 
 
@@ -155,7 +154,7 @@ export function ServicesSlider() {
           </div>
 
           {/* Next Button */}
-          <button 
+          <button
             onClick={scrollNext}
             className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all shadow-lg"
           >
@@ -169,11 +168,10 @@ export function ServicesSlider() {
             <button
               key={idx}
               onClick={() => scrollTo(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                selectedIndex === idx 
-                  ? 'w-8 bg-[var(--color-primary)]' 
+              className={`h-2 rounded-full transition-all duration-300 ${selectedIndex === idx
+                  ? 'w-8 bg-[var(--color-primary)]'
                   : 'w-2 bg-[var(--color-bg-border)] hover:bg-[var(--color-text-muted)]'
-              }`}
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}

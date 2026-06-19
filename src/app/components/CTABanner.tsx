@@ -34,7 +34,7 @@ export function CTABanner() {
               Talk to Sales
             </Button>
           </Link>
-          
+
           <div className="flex items-center gap-4 mt-2">
             {[Linkedin, Twitter, Youtube, Github].map((Icon, i) => (
               <a

@@ -66,15 +66,15 @@ export function Navigation() {
 
           {/* CTA Buttons (desktop/tablet) */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link to="/contact">
-              <Button variant="primary" size="sm" className="text-[13px] xl:text-[14px] px-[12px] xl:px-[14px] py-[6px] xl:py-[8px]">Get Started Free</Button>
+            <Link to="/products">
+              <Button variant="primary" size="sm" className="text-[13px] xl:text-[14px] px-[12px] xl:px-[14px] py-[6px] xl:py-[8px]">Get Started</Button>
             </Link>
           </div>
 
           {/* Tablet: show Get Started button + hamburger */}
           <div className="hidden md:flex lg:hidden items-center gap-3">
-            <Link to="/contact">
-              <Button variant="primary" size="sm" className="text-[13px] px-[14px] py-[8px]">Get Started Free</Button>
+            <Link to="/products">
+              <Button variant="primary" size="sm" className="text-[13px] px-[14px] py-[8px]">Get Started</Button>
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -125,8 +125,8 @@ export function Navigation() {
 
             {/* CTA Buttons at bottom */}
             <div className="flex flex-col gap-4 p-[20px] border-t border-[var(--color-bg-border)]">
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="primary" size="md" className="w-full h-[52px]">Get Started Free</Button>
+              <Link to="/products" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="primary" size="md" className="w-full h-[52px]">Get Started</Button>
               </Link>
             </div>
           </div>
