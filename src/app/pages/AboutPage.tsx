@@ -1,38 +1,44 @@
 import { Link } from 'react-router';
-import { Target, Users, Globe2, Award, ArrowRight, Lightbulb, Shield, Zap, Twitter, Linkedin } from 'lucide-react';
+import { Target, Users, Globe2, ArrowRight, Lightbulb, Shield, Zap, Instagram, Facebook, Linkedin, Globe } from 'lucide-react';
 import { Button } from '../components/Button';
 
 const values = [
-  { icon: Lightbulb, title: 'Simplicity first', desc: 'Enterprise power should not require enterprise complexity. We obsess over usability so your team can focus on work, not software.' },
-  { icon: Shield, title: 'Security by design', desc: 'Data stays local by default. Every feature is built with security as a constraint, not an afterthought.' },
-  { icon: Zap, title: 'Performance everywhere', desc: 'Works offline, launches fast, and never holds your operations hostage to an internet connection.' },
-  { icon: Globe2, title: 'Built for emerging markets', desc: 'We design for the realities of variable connectivity, local compliance, and growing teams.' },
+  { icon: Lightbulb, title: 'Creativity First', desc: "We don't just write lines of code. We obsess over the user experience, ensuring your software is beautifully designed, highly intuitive, and enjoyable for your team to use." },
+  { icon: Shield, title: 'Built to Scale', desc: 'We engineer our products and services using modern, secure tech stacks. As your business grows, your Techleeq software smoothly evolves right alongside you.' },
+  { icon: Zap, title: 'Agile & Transparent', desc: 'Being a focused, energetic team means we move fast. You get direct collaboration, rapid feature deployment, and absolute transparency at every single milestone.' },
+  { icon: Globe2, title: 'The Perfect Hybrid', desc: 'Whether you need a bespoke application built from scratch or want to plug into our ready-to-go software products, we provide a complete technical ecosystem under one roof.' },
 ];
 
 const team = [
   {
-    name: 'Emeka Okafor',
-    title: 'CEO & Co-Founder',
-    bio: 'Former Head of Engineering at Interswitch. 15 years building enterprise software across Africa and Europe.',
+    name: 'Abdullah Bilal',
+    title: 'Founder & CEO',
+    bio: 'Business Management expert and AI/ML Engineer. Abdullah brings visionary leadership and technical depth, steering Techleeq to innovate at the intersection of AI and business strategy.',
     imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop',
-    twitter: '#',
-    linkedin: '#'
+    instagram: '#',
+    facebook: '#',
+    linkedin: '#',
+    portfolio: '#'
   },
   {
-    name: 'Amira Hassan',
-    title: 'CPO & Co-Founder',
-    bio: 'Previously led product at Flutterwave. Deep expertise in fintech and business workflow design.',
-    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop',
-    twitter: '#',
-    linkedin: '#'
-  },
-  {
-    name: 'Kofi Mensah',
-    title: 'CTO',
-    bio: 'Distributed systems engineer, ex-Andela. Architect of TechLeeq\'s offline-first sync engine.',
+    name: 'Mustafa',
+    title: 'CTO (Chief Technical Officer)',
+    bio: 'Mustafa is a full-stack powerhouse with a passion for building robust, high-performance systems. He leads our engineering efforts, ensuring every line of code meets the highest standards.',
     imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop',
-    twitter: '#',
-    linkedin: '#'
+    instagram: '#',
+    facebook: '#',
+    linkedin: '#',
+    portfolio: '#'
+  },
+  {
+    name: 'Hamza',
+    title: 'COO (Chief Operation Officer)',
+    bio: 'Hamza is the operational backbone of Techleeq, with extensive experience in streamlining workflows and scaling operations. He ensures seamless project delivery and exceptional client satisfaction.',
+    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop',
+    instagram: '#',
+    facebook: '#',
+    linkedin: '#',
+    portfolio: '#'
   },
 ];
 
@@ -54,11 +60,11 @@ export function AboutPage() {
             Our Story
           </span>
           <h1 className="text-[42px] md:text-[56px] text-[var(--color-text-primary)] mb-5" style={{ letterSpacing: 'var(--tracking-tight)', lineHeight: 'var(--leading-tight)' }}>
-            We're building the operating system<br />
-            <span className="gradient-text">for African business</span>
+            We are engineering the future<br />
+            <span className="gradient-text">where creativity meets tech</span>
           </h1>
-          <p className="text-[18px] text-[var(--color-text-secondary)] mb-8">
-            TechLeeq was born from a simple frustration: world-class business software shouldn't require a world-class IT department.
+          <p className="text-[18px] text-[var(--color-text-secondary)] mb-8 leading-relaxed max-w-[700px] mx-auto">
+            Techleeq was born out of a simple vision: high-performance software shouldn't look rigid, and creative ideas shouldn't lack technical power. We build elite digital products and bespoke solutions that push businesses forward.
           </p>
         </div>
       </section>
@@ -77,30 +83,30 @@ export function AboutPage() {
 
       {/* Mission */}
       <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 mb-4">
               <Target size={18} className="text-[var(--color-primary)]" />
               <span className="text-[12px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] font-semibold">Our Mission</span>
             </div>
             <h2 className="text-[34px] text-[var(--color-text-primary)] mb-5" style={{ letterSpacing: 'var(--tracking-tight)' }}>
-              Democratize enterprise-grade software for every business
+              Making world-class software accessible to growing brands.
             </h2>
             <p className="text-[16px] text-[var(--color-text-secondary)] leading-relaxed mb-4">
-              Legacy ERP systems cost hundreds of thousands to deploy and months to learn. Cloud-first SaaS tools fail when connectivity does. Small and mid-sized businesses are caught between unaffordable enterprise software and inadequate consumer tools.
+              Great ideas often get trapped behind overly complicated technology or massive price tags. At Techleeq, we are changing that. We don't believe in rigid, one-size-fits-all solutions that are impossible to navigate.
             </p>
             <p className="text-[16px] text-[var(--color-text-secondary)] leading-relaxed">
-              TechLeeq is different: a professional-grade, offline-first desktop platform that works the way your business works — fast, reliable, and completely under your control.
+              We are a dynamic, agile team built to bridge the gap. By combining intentional, creative design with robust modern engineering, we deliver custom software services and innovative digital products that give your business the ultimate competitive edge—without the enterprise headache.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {values.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="p-5 rounded-[var(--radius-lg)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)]">
                 <div className="w-10 h-10 rounded-[var(--radius-md)] bg-[rgba(10,132,255,0.12)] flex items-center justify-center mb-3">
                   <Icon size={18} className="text-[var(--color-primary)]" />
                 </div>
-                <h4 className="text-[14px] font-semibold text-[var(--color-text-primary)] mb-1">{title}</h4>
-                <p className="text-[12px] text-[var(--color-text-secondary)] leading-relaxed">{desc}</p>
+                <h4 className="text-[15px] font-semibold text-[var(--color-text-primary)] mb-2">{title}</h4>
+                <p className="text-[13px] text-[var(--color-text-secondary)] leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -117,7 +123,7 @@ export function AboutPage() {
             </div>
             <h2 className="text-[32px] md:text-[40px] text-[var(--color-text-primary)]" style={{ letterSpacing: 'var(--tracking-tight)' }}>Meet the team</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {team.map((member) => (
               <div key={member.name} className="p-6 rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col items-center text-center">
                 <div className="w-[120px] h-[120px] rounded-full overflow-hidden mb-5 border-4 border-[rgba(10,132,255,0.08)]">
@@ -126,12 +132,18 @@ export function AboutPage() {
                 <h4 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-1">{member.name}</h4>
                 <p className="text-[13px] text-[var(--color-primary)] font-medium mb-4">{member.title}</p>
                 <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-6">{member.bio}</p>
-                <div className="flex gap-4 mt-auto">
-                  <a href={member.twitter} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all">
-                    <Twitter size={16} />
+                <div className="flex gap-3 mt-auto">
+                  <a href={member.instagram} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all" aria-label="Instagram">
+                    <Instagram size={15} />
                   </a>
-                  <a href={member.linkedin} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all">
-                    <Linkedin size={16} />
+                  <a href={member.facebook} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all" aria-label="Facebook">
+                    <Facebook size={15} />
+                  </a>
+                  <a href={member.linkedin} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all" aria-label="LinkedIn">
+                    <Linkedin size={15} />
+                  </a>
+                  <a href={member.portfolio} className="w-8 h-8 rounded-full bg-[rgba(10,132,255,0.08)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[rgba(10,132,255,0.15)] transition-all" aria-label="Portfolio">
+                    <Globe size={15} />
                   </a>
                 </div>
               </div>

@@ -1,12 +1,10 @@
-import { Check, BarChart3, Users, Zap, Lock, Cloud } from 'lucide-react';
+import { Check, BarChart3, Users, Zap } from 'lucide-react';
 import { Button } from './Button';
 
 const checklistItems = [
-  'Centralized management dashboard',
-  'Role-based access control',
-  'Real-time analytics & reporting',
-  'Automated workflows & task management',
-  'Offline + cloud sync capability',
+  'Beautifully designed UI/UX experiences',
+  'Scalable, enterprise-grade architecture',
+  'Rapid development & deployment',
 ];
 
 const stats = [
@@ -26,14 +24,14 @@ export function ValueProposition() {
               WHY TECHLEEQ
             </p>
             <h2 className="font-['Syne'] text-[40px] md:text-[40px] font-bold leading-tight text-[var(--color-text-primary)] mb-6">
-              Everything your business needs. One platform.
+              Where your vision meets our execution.
             </h2>
             <div className="space-y-4 mb-8 text-[17px] text-[var(--color-text-secondary)] leading-relaxed">
               <p>
-                Running a business shouldn't mean juggling dozens of disconnected tools. TechLeeq brings everything under one roof — from employee management to inventory tracking, sales pipelines to financial reporting.
+                We believe that powerful software shouldn't feel rigid or complex. At Techleeq, we combine creative strategy with robust engineering to build solutions that breathe life into your business operations, automate workflows, and drive revenue.
               </p>
               <p>
-                Built for businesses that want enterprise-grade power without enterprise-grade complexity. Get up and running in minutes, not months.
+                From standalone internal tools to scalable customer-facing applications, our ecosystem of custom services and tailored products is built to scale alongside your ambition.
               </p>
             </div>
 
