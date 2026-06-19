@@ -48,7 +48,7 @@ function FooterAccordion({ title, links }: { title: string; links: typeof compan
 
 export function Footer() {
   return (
-    <footer className="bg-[#060A10] border-t border-[var(--color-bg-border)] snap-start
+    <footer className="bg-[#EBF0FF] border-t border-[var(--color-bg-border)] snap-start
       pt-[28px] md:pt-[36px] lg:pt-[44px]
       pb-[20px] md:pb-[24px]
       px-[20px] md:px-[40px]">

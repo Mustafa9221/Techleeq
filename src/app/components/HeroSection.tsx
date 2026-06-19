@@ -78,8 +78,8 @@ const companies = ['TechCorp', 'InnoSys', 'DataFlow', 'CloudSync', 'BizHub', 'Op
 function SocialProofTicker() {
   return (
     <div
-      className="relative z-10 w-full border-t border-[rgba(30,45,69,0.7)]"
-      style={{ backgroundColor: 'rgba(15,21,32,0.7)', backdropFilter: 'blur(8px)', flexShrink: 0 }}
+      className="relative z-10 w-full border-t border-[rgba(200,213,238,0.8)]"
+      style={{ backgroundColor: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(8px)', flexShrink: 0 }}
     >
       <div className="max-w-[1280px] mx-auto px-5 py-3">
         <p

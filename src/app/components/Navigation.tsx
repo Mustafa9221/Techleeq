@@ -33,7 +33,7 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[1000] bg-[rgba(8,12,20,0.85)] backdrop-blur-nav border-b border-[rgba(30,45,69,0.6)]
+      <nav className="fixed top-0 left-0 right-0 z-[1000] bg-[rgba(244,247,255,0.92)] backdrop-blur-nav border-b border-[rgba(200,213,238,0.8)]
         h-[60px] md:h-[68px]
         px-[20px] md:px-[28px] lg:px-[40px]">
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between">
@@ -99,7 +99,7 @@ export function Navigation() {
       {/* Mobile/Tablet Full-Screen Overlay Menu */}
       {mobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-[999] bg-[rgba(15,21,32,0.96)] backdrop-blur-nav animate-[slideDown_300ms_ease-out]"
+          className="lg:hidden fixed inset-0 z-[999] bg-[rgba(244,247,255,0.98)] backdrop-blur-nav animate-[slideDown_300ms_ease-out]"
           style={{
             animation: 'slideDown 300ms ease-out',
             paddingTop: '68px',
