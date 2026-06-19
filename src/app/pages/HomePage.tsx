@@ -1,5 +1,4 @@
 import { HeroSection } from '../components/HeroSection';
-import { SocialProofBar } from '../components/SocialProofBar';
 import { ValueProposition } from '../components/ValueProposition';
 import { FeaturesGrid } from '../components/FeaturesGrid';
 import { HowItWorks } from '../components/HowItWorks';
@@ -10,7 +9,6 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
-      <SocialProofBar />
       <ValueProposition />
       <FeaturesGrid />
       <ServicesSlider />

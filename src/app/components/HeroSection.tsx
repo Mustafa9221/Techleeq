@@ -3,58 +3,46 @@ import { Link } from 'react-router';
 import { Button } from './Button';
 import { motion } from 'motion/react';
 
-/* ── Animated decorative orb / circuit graphic ───────────────────────── */
+/* ── Animated background graphic ─────────────────────────────────────── */
 function AnimatedGraphic() {
   return (
-    <div
-      className="absolute inset-0 overflow-hidden pointer-events-none"
-      aria-hidden="true"
-    >
-      {/* Large blurred primary glow – top-right */}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {/* Primary blue glow – top-right */}
       <motion.div
         className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
         style={{
-          background:
-            'radial-gradient(circle, rgba(10,132,255,0.18) 0%, rgba(124,92,252,0.10) 50%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(10,132,255,0.18) 0%, rgba(124,92,252,0.10) 50%, transparent 70%)',
           filter: 'blur(60px)',
         }}
         animate={{ scale: [1, 1.12, 1], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
-
-      {/* Secondary violet glow – bottom-left */}
+      {/* Violet glow – bottom-left */}
       <motion.div
         className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full"
         style={{
-          background:
-            'radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
         animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.8, 0.4] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
       />
 
-      {/* SVG circuit / orb decoration – right side */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[480px] h-[480px] opacity-[0.12] hidden xl:block">
+      {/* SVG circuit orb – right side, desktop only */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[420px] h-[420px] opacity-[0.10] hidden xl:block">
         <svg viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="240" cy="240" r="200" stroke="#0A84FF" strokeWidth="1" strokeDasharray="6 10" />
           <circle cx="240" cy="240" r="150" stroke="#7C5CFC" strokeWidth="0.8" strokeDasharray="4 8" />
           <circle cx="240" cy="240" r="100" stroke="#00D4C8" strokeWidth="0.6" />
           <circle cx="240" cy="240" r="50" fill="rgba(10,132,255,0.08)" stroke="#0A84FF" strokeWidth="1.5" />
-          {/* Nodes */}
-          {[0,60,120,180,240,300].map((deg, i) => {
+          {[0, 60, 120, 180, 240, 300].map((deg, i) => {
             const rad = (deg * Math.PI) / 180;
-            const x = 240 + 200 * Math.cos(rad);
-            const y = 240 + 200 * Math.sin(rad);
-            return <circle key={i} cx={x} cy={y} r="4" fill="#0A84FF" opacity="0.8" />;
+            return <circle key={i} cx={240 + 200 * Math.cos(rad)} cy={240 + 200 * Math.sin(rad)} r="4" fill="#0A84FF" opacity="0.8" />;
           })}
-          {[30,90,150,210,270,330].map((deg, i) => {
+          {[30, 90, 150, 210, 270, 330].map((deg, i) => {
             const rad = (deg * Math.PI) / 180;
-            const x = 240 + 150 * Math.cos(rad);
-            const y = 240 + 150 * Math.sin(rad);
-            return <circle key={i} cx={x} cy={y} r="3" fill="#7C5CFC" opacity="0.8" />;
+            return <circle key={i} cx={240 + 150 * Math.cos(rad)} cy={240 + 150 * Math.sin(rad)} r="3" fill="#7C5CFC" opacity="0.8" />;
           })}
-          {/* Connecting lines */}
           <line x1="240" y1="40" x2="240" y2="90" stroke="#0A84FF" strokeWidth="0.8" opacity="0.5" />
           <line x1="240" y1="390" x2="240" y2="440" stroke="#0A84FF" strokeWidth="0.8" opacity="0.5" />
           <line x1="40" y1="240" x2="90" y2="240" stroke="#7C5CFC" strokeWidth="0.8" opacity="0.5" />
@@ -63,7 +51,7 @@ function AnimatedGraphic() {
       </div>
 
       {/* Floating particles */}
-      {[...Array(18)].map((_, i) => (
+      {[...Array(16)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full"
@@ -71,29 +59,74 @@ function AnimatedGraphic() {
             width: i % 3 === 0 ? '3px' : '2px',
             height: i % 3 === 0 ? '3px' : '2px',
             background: i % 2 === 0 ? '#0A84FF' : '#7C5CFC',
-            left: `${(i * 5.7) % 100}%`,
-            top: `${(i * 7.3 + 10) % 100}%`,
+            left: `${(i * 6.2) % 100}%`,
+            top: `${(i * 7.1 + 5) % 95}%`,
           }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.3, 0.8, 0.3],
-          }}
-          transition={{
-            duration: 4 + (i % 5),
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: i * 0.3,
-          }}
+          animate={{ y: [0, -24, 0], opacity: [0.3, 0.8, 0.3] }}
+          transition={{ duration: 4 + (i % 5), repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
         />
       ))}
 
-      {/* Horizontal scan line */}
-      <motion.div
-        className="absolute left-0 right-0 h-[1px] hidden md:block"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(10,132,255,0.3), transparent)' }}
-        animate={{ top: ['10%', '90%', '10%'] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
-      />
+
+    </div>
+  );
+}
+
+/* ── Social Proof Ticker (embedded) ──────────────────────────────────── */
+const companies = ['TechCorp', 'InnoSys', 'DataFlow', 'CloudSync', 'BizHub', 'OptiMax', 'VentureX', 'NexGen', 'ProSuite', 'SmartOps'];
+
+function SocialProofTicker() {
+  return (
+    <div
+      className="relative z-10 w-full border-t border-[rgba(30,45,69,0.7)]"
+      style={{ backgroundColor: 'rgba(15,21,32,0.7)', backdropFilter: 'blur(8px)', flexShrink: 0 }}
+    >
+      <div className="max-w-[1280px] mx-auto px-5 py-3">
+        <p
+          className="text-center mb-2"
+          style={{
+            fontSize: 'clamp(9px, 1.1vw, 11px)',
+            letterSpacing: '0.12em',
+            color: 'var(--color-text-muted)',
+            textTransform: 'uppercase',
+            fontFamily: "'Geist', sans-serif",
+          }}
+        >
+          Trusted by growing businesses across industries
+        </p>
+        <div className="overflow-hidden">
+          <div className="flex gap-10 hero-ticker">
+            {[...companies, ...companies].map((company, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 font-bold tracking-tight"
+                style={{
+                  minWidth: '100px',
+                  color: 'var(--color-text-primary)',
+                  opacity: 0.28,
+                  fontSize: 'clamp(12px, 1.3vw, 15px)',
+                  fontFamily: "'Geist', sans-serif",
+                }}
+              >
+                {company}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes hero-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .hero-ticker {
+          animation: hero-scroll 28s linear infinite;
+        }
+        .hero-ticker:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 }
@@ -103,10 +136,18 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative gradient-hero w-full overflow-hidden"
-      style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+      className="relative gradient-hero w-full"
+      style={{
+        /* Lock the entire section to exactly one viewport height */
+        height: '100dvh',
+        minHeight: '100dvh',
+        maxHeight: '100dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+      }}
     >
-      {/* Dot grid pattern */}
+      {/* Dot grid */}
       <div
         className="absolute inset-0 opacity-[0.035]"
         style={{
@@ -115,154 +156,156 @@ export function HeroSection() {
         }}
       />
 
-      {/* Animated background graphics */}
+      {/* Animated background */}
       <AnimatedGraphic />
 
-      {/* ── Main content ── */}
+      {/* ── Main content (grows to fill, centers content vertically) ── */}
       <div
         className="relative z-10 w-full mx-auto text-center flex flex-col items-center justify-center"
         style={{
-          paddingTop: 'clamp(100px, 15vh, 140px)',
-          paddingBottom: 'clamp(40px, 8vh, 80px)',
-          paddingLeft: 'clamp(20px, 5vw, 80px)',
-          paddingRight: 'clamp(20px, 5vw, 80px)',
+          flex: 1,
+          /* Top padding clears the fixed navbar (60-68px) */
+          paddingTop: 'clamp(68px, 11vh, 96px)',
+          paddingBottom: 'clamp(8px, 1.5vh, 16px)',
+          paddingLeft: 'clamp(16px, 5vw, 80px)',
+          paddingRight: 'clamp(16px, 5vw, 80px)',
           maxWidth: '1280px',
+          /* Gap between every child element scales with viewport height */
+          gap: 'clamp(6px, 1.8vh, 18px)',
         }}
       >
-        {/* ── Top badge ── */}
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0 }}
-          className="inline-flex items-center gap-2 mb-5 md:mb-7"
+          transition={{ duration: 0.5 }}
           style={{
-            padding: '6px 16px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: 'clamp(4px,0.6vh,7px) clamp(12px,1.5vw,18px)',
             borderRadius: '9999px',
             border: '1px solid rgba(10,132,255,0.35)',
             background: 'rgba(10,132,255,0.09)',
             color: 'var(--color-primary)',
-            fontSize: 'clamp(11px, 1.2vw, 13px)',
+            fontSize: 'clamp(10px, 1.1vw, 13px)',
             fontFamily: "'Geist', sans-serif",
             fontWeight: 500,
             letterSpacing: '0.06em',
+            flexShrink: 0,
           }}
         >
-          <span style={{ color: 'var(--color-primary)', fontSize: '14px' }}>✦</span>
+          <span style={{ fontSize: 'clamp(11px,1.2vw,14px)' }}>✦</span>
           Trusted by 500+ Businesses
         </motion.div>
 
-        {/* ── Main headline ── */}
+        {/* Headline line 1 */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.08 }}
+          transition={{ duration: 0.6, delay: 0.08 }}
           style={{
             fontFamily: "'Syne', sans-serif",
             fontWeight: 800,
-            lineHeight: 1.08,
+            lineHeight: 1.06,
             letterSpacing: '-0.02em',
-            fontSize: 'clamp(42px, 7.5vw, 96px)',
+            /* Scales with BOTH vw and vh so it never overflows in any direction */
+            fontSize: 'clamp(28px, min(7vw, 8.5vh), 96px)',
             color: 'var(--color-text-primary)',
-            marginBottom: 'clamp(8px, 1.5vw, 16px)',
-            width: '100%',
+            margin: 0,
+            flexShrink: 0,
           }}
         >
           Where Creativity
         </motion.h1>
 
+        {/* Headline line 2 – gradient */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.14 }}
+          transition={{ duration: 0.6, delay: 0.14 }}
           style={{
             fontFamily: "'Syne', sans-serif",
             fontWeight: 800,
-            lineHeight: 1.08,
+            lineHeight: 1.06,
             letterSpacing: '-0.02em',
-            fontSize: 'clamp(42px, 7.5vw, 96px)',
+            fontSize: 'clamp(28px, min(7vw, 8.5vh), 96px)',
             background: 'linear-gradient(90deg, #0A84FF 0%, #7C5CFC 100%)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: 'clamp(16px, 3vw, 32px)',
-            width: '100%',
+            margin: 0,
+            flexShrink: 0,
           }}
         >
           Meets Technology.
         </motion.div>
 
-        {/* ── Sub-headline ── */}
+        {/* Sub-headline */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.22 }}
+          transition={{ duration: 0.55, delay: 0.22 }}
           style={{
             fontFamily: "'Geist', sans-serif",
-            fontSize: 'clamp(15px, 1.6vw, 19px)',
-            lineHeight: 1.7,
+            fontSize: 'clamp(13px, min(1.5vw, 2.1vh), 19px)',
+            lineHeight: 1.65,
             color: 'var(--color-text-secondary)',
-            maxWidth: '680px',
-            marginBottom: 'clamp(28px, 5vw, 48px)',
+            maxWidth: '640px',
+            margin: 0,
+            flexShrink: 0,
           }}
         >
-          Techleeq builds custom digital solutions and ready-to-scale software
-          products designed to streamline your operations, elevate your brand,
-          and supercharge your growth.
+          Techleeq builds custom digital solutions and ready-to-scale software products
+          designed to streamline your operations, elevate your brand, and supercharge your growth.
         </motion.p>
 
-        {/* ── CTA Buttons ── */}
+        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.55, delay: 0.3 }}
           style={{
             display: 'flex',
             flexDirection: 'row',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '16px',
+            gap: 'clamp(10px, 1.2vw, 16px)',
+            flexShrink: 0,
           }}
         >
           <Link to="/products">
-            <Button
-              variant="primary"
-              size="xl"
-              icon={<Package size={20} />}
-              iconPosition="left"
-              className="h-[52px] md:h-auto"
-            >
+            <Button variant="primary" size="xl" icon={<Package size={18} />} iconPosition="left">
               Explore Products
             </Button>
           </Link>
           <Link to="/contact">
-            <Button
-              variant="secondary"
-              size="xl"
-              icon={<MessageSquare size={20} />}
-              iconPosition="left"
-              className="h-[52px] md:h-auto"
-            >
+            <Button variant="secondary" size="xl" icon={<MessageSquare size={18} />} iconPosition="left">
               Get Started
             </Button>
           </Link>
         </motion.div>
 
-        {/* ── Trust micro-copy ── */}
+        {/* Trust micro-copy */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.42 }}
+          transition={{ duration: 0.55, delay: 0.4 }}
           style={{
-            marginTop: 'clamp(14px, 2vw, 24px)',
-            fontSize: 'clamp(11px, 1.1vw, 13px)',
+            fontSize: 'clamp(10px, 1vw, 13px)',
             color: 'var(--color-text-muted)',
             fontFamily: "'Geist', sans-serif",
+            margin: 0,
+            flexShrink: 0,
           }}
         >
           Enterprise-grade solutions · Dedicated support · Scalable from day one
         </motion.p>
       </div>
+
+      {/* ── Social proof ticker – pinned at the bottom of the hero ── */}
+      <SocialProofTicker />
     </section>
   );
 }
