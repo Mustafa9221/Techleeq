@@ -21,7 +21,7 @@ export function ProductDetailPage() {
           <ArrowLeft size={16} />
           Back to Products
         </Link>
-        
+
         <div className="bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] rounded-[var(--radius-2xl)] p-8 md:p-12 shadow-sm relative overflow-hidden">
           {/* Subtle gradient background based on product color */}
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-5 pointer-events-none" style={{ background: product.color }} />
@@ -35,11 +35,11 @@ export function ProductDetailPage() {
               <p className="text-[18px] text-[var(--color-text-secondary)] font-medium" style={{ color: product.color }}>{product.tagline}</p>
             </div>
           </div>
-          
+
           <div className="mb-10 relative z-10">
             <p className="text-[16px] text-[var(--color-text-secondary)] leading-relaxed">{product.desc}</p>
           </div>
-          
+
           <div className="mb-10 relative z-10">
             <h3 className="text-[20px] font-bold text-[var(--color-text-primary)] mb-6" style={{ letterSpacing: 'var(--tracking-tight)' }}>Key Features</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -59,15 +59,15 @@ export function ProductDetailPage() {
               <p className="text-[13px] text-[var(--color-text-secondary)]">{product.stat.label}</p>
             </div>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-8 border-t border-[var(--color-bg-border)] relative z-10">
             <Link to="/download" className="w-full sm:w-auto">
-              <Button variant="primary" size="lg" className="w-full rounded-full border-0 h-[48px] px-8" style={{ background: 'linear-gradient(90deg, #3B82F6 0%, #8B5CF6 100%)' }}>
+              <Button variant="primary" size="lg" className="w-full">
                 Buy Module
               </Button>
             </Link>
             <Link to="/contact" className="w-full sm:w-auto">
-              <Button variant="secondary" size="lg" className="w-full rounded-full h-[48px] px-8 bg-transparent border border-[var(--color-bg-border)] text-[var(--color-text-primary)] hover:border-[var(--color-primary)]">
+              <Button variant="secondary" size="lg" className="w-full">
                 Contact Sales
               </Button>
             </Link>

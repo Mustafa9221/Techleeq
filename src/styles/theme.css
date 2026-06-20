@@ -16,9 +16,10 @@
   --color-bg-border: #C8D5EE;
 
   /* ===== TEXT SCALE ===== */
-  --color-text-primary: #080E1E;
+  --color-text-primary: #000000;
   --color-text-secondary: #3D5478;
   --color-text-muted: #7090B8;
+  --color-heading: #4B5563;
 
   /* ===== ACCENT COLORS ===== */
   --color-accent-teal: #00D4C8;
@@ -223,7 +224,7 @@
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-normal);
-    color: var(--color-text-primary);
+    color: var(--color-heading);
   }
 }
 

@@ -153,12 +153,12 @@ export function ProductsPage() {
                 <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed flex-1 mb-8">{tagline}</p>
                 <div className="grid grid-cols-2 gap-4 mt-auto">
                   <Link to="/download">
-                    <Button variant="primary" size="md" className="w-full rounded-full h-[44px] text-[14px] font-semibold border-0" style={{ background: 'linear-gradient(90deg, #3B82F6 0%, #8B5CF6 100%)' }}>
+                    <Button variant="primary" size="md" className="w-full">
                       Buy
                     </Button>
                   </Link>
                   <Link to={`/products/${id}`}>
-                    <Button variant="secondary" size="md" className="w-full rounded-full h-[44px] text-[14px] font-semibold bg-transparent border border-[var(--color-bg-border)] text-[var(--color-text-primary)] hover:border-[var(--color-primary)] hover:bg-transparent">
+                    <Button variant="secondary" size="md" className="w-full">
                       Detail
                     </Button>
                   </Link>
