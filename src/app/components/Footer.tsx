@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Linkedin, Instagram, Facebook, ChevronDown } from 'lucide-react';
+import { Linkedin, Instagram, Facebook, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { Button } from './Button';
 
@@ -47,8 +47,46 @@ function FooterAccordion({ title, links }: { title: string; links: typeof compan
 }
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus('loading');
+
+    const scriptUrl = import.meta.env.VITE_SUBSCRIBE_SCRIPT_URL;
+
+    try {
+      await fetch(scriptUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          workEmail: email, // in case it reuses the contact logic
+          subscriber: { email: email },
+          data: { email: email },
+          name: 'Newsletter Subscriber',
+          companyName: 'N/A',
+          reason: 'Newsletter Subscription',
+          message: 'Subscribe me to the newsletter',
+          action: 'subscribe',
+          type: 'subscribe',
+          submitted_at: new Date().toISOString(),
+        }),
+        mode: 'no-cors',
+      });
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   return (
-    <footer className="bg-[#EBF0FF] border-t border-[var(--color-bg-border)] snap-start
+    <footer className="bg-[var(--color-bg-base)] border-t border-[var(--color-bg-border)] snap-start
       pt-[28px] md:pt-[36px] lg:pt-[44px]
       pb-[20px] md:pb-[24px]
       px-[20px] md:px-[40px]">
@@ -123,14 +161,21 @@ export function Footer() {
           <div className="md:col-span-2 lg:col-span-1">
             <h4 className="text-[12px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] font-semibold mb-4">Stay in the Loop</h4>
             <p className="text-[13px] text-[var(--color-text-muted)] mb-4 leading-relaxed">Product updates, tips, and industry insights.</p>
-            <div className="flex lg:flex-col gap-2">
+            <form onSubmit={handleSubscribe} className="flex lg:flex-col gap-2">
               <input
                 type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email"
-                className="flex-1 lg:flex-none h-[44px] px-4 bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] rounded-[var(--radius-md)] text-[14px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-glow)] transition-all"
+                disabled={status === 'loading' || status === 'success'}
+                className="flex-1 lg:flex-none h-[44px] px-4 bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] rounded-[var(--radius-md)] text-[14px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-glow)] transition-all disabled:opacity-50"
               />
-              <Button variant="primary" size="sm" className="lg:w-full whitespace-nowrap">Subscribe</Button>
-            </div>
+              <Button type="submit" variant="primary" size="sm" disabled={status === 'loading' || status === 'success'} className="lg:w-full whitespace-nowrap">
+                {status === 'loading' ? 'Subscribing...' : status === 'success' ? <span className="flex items-center gap-2"><CheckCircle2 size={16} /> Subscribed!</span> : 'Subscribe'}
+              </Button>
+            </form>
+            {status === 'error' && <p className="text-red-500 text-[12px] mt-2">Failed to subscribe. Please try again.</p>}
           </div>
         </div>
 
@@ -169,14 +214,21 @@ export function Footer() {
           <div className="mb-8">
             <h4 className="text-[16px] font-semibold text-[var(--color-text-primary)] mb-2">Stay in the loop</h4>
             <p className="text-[13px] text-[var(--color-text-muted)] mb-4">Product updates, tips, and industry insights.</p>
-            <div className="flex flex-col gap-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
               <input
                 type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email"
-                className="h-[52px] px-4 bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] rounded-[var(--radius-md)] text-[16px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-glow)] transition-all"
+                disabled={status === 'loading' || status === 'success'}
+                className="h-[52px] px-4 bg-[var(--color-bg-elevated)] border border-[var(--color-bg-border)] rounded-[var(--radius-md)] text-[16px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-glow)] transition-all disabled:opacity-50"
               />
-              <Button variant="primary" size="md" className="w-full h-[52px]">Subscribe</Button>
-            </div>
+              <Button type="submit" variant="primary" size="md" disabled={status === 'loading' || status === 'success'} className="w-full h-[52px]">
+                {status === 'loading' ? 'Subscribing...' : status === 'success' ? <span className="flex items-center gap-2 justify-center"><CheckCircle2 size={16} /> Subscribed!</span> : 'Subscribe'}
+              </Button>
+            </form>
+            {status === 'error' && <p className="text-red-500 text-[12px] mt-2">Failed to subscribe. Please try again.</p>}
           </div>
         </div>
 
