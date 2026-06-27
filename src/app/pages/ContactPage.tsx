@@ -22,14 +22,36 @@ export function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', company: '', reason: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+
+    const scriptUrl = import.meta.env.VITE_CONTACT_SCRIPT_URL;
+
+    try {
+      const res = await fetch(scriptUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          workEmail: form.email,
+          companyName: form.company,
+          reason: form.reason,
+          message: form.message,
+          submitted_at: new Date().toISOString(),
+        }),
+        mode: 'no-cors', // Google Apps Script requires no-cors
+      });
+      // no-cors gives opaque response — treat any completion as success
       setSubmitted(true);
-    }, 1500);
+    } catch (err) {
+      setError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const update = (field: string, value: string) => setForm((prev) => ({ ...prev, [field]: value }));
@@ -75,6 +97,11 @@ export function ContactPage() {
             ) : (
               <>
                 <h2 className="text-[22px] font-bold text-[var(--color-text-primary)] mb-6">Send us a message</h2>
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-[var(--radius-md)] mb-6 text-[14px]">
+                    {error}
+                  </div>
+                )}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>

@@ -1,53 +1,8 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import {
-  Headphones, BookOpen, Wrench, ArrowUpRight, BarChart3, RefreshCw, ShieldCheck, Users2, Clock, CheckCircle2
-} from 'lucide-react';
+import { BookOpen, CheckCircle2 } from 'lucide-react';
 import { Button } from '../components/Button';
-
-const services = [
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop',
-    title: 'Implementation & Onboarding',
-    color: 'var(--color-primary)',
-    desc: 'Our certified implementation specialists handle the full rollout — from data migration to staff training — so your team is productive from day one.',
-    features: ['Dedicated project manager', 'Data migration from legacy systems', 'Custom workflow configuration', 'Multi-site rollout coordination', 'Go-live support & hypercare'],
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop',
-    title: 'Training & Enablement',
-    color: 'var(--color-accent-teal)',
-    desc: 'Live virtual training, on-demand video courses, and custom playbooks tailored to each role in your organization.',
-    features: ['Role-based training programs', 'Live virtual instructor sessions', 'Self-paced video library (150+ lessons)', 'Admin certification program', 'Ongoing lunch-and-learn sessions'],
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop',
-    title: 'Custom Development',
-    color: 'var(--color-accent-violet)',
-    desc: 'Need a module that doesn\'t exist yet? Our engineering team builds custom extensions, integrations, and workflows on your timeline.',
-    features: ['Custom module development', 'API integration with third-party tools', 'ERP/accounting system connectors', 'Custom report & dashboard builds', 'White-label configurations'],
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop',
-    title: 'Business Intelligence & Analytics',
-    color: 'var(--color-accent-amber)',
-    desc: 'Turn your TechLeeq data into strategic insight with our BI consulting team. We build dashboards that actually get used.',
-    features: ['KPI dashboard design', 'Executive reporting templates', 'Data warehouse connectors', 'Automated scheduled reports', 'Predictive analytics models'],
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600&auto=format&fit=crop',
-    title: 'Managed Updates & Maintenance',
-    color: 'var(--color-accent-green)',
-    desc: 'Let our ops team handle version upgrades, patch deployments, and database maintenance on your schedule, not ours.',
-    features: ['Scheduled update deployments', 'Zero-downtime upgrade process', 'Database optimization & cleanup', 'Configuration backup & recovery', 'Change management advisory'],
-  },
-  {
-    imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600&auto=format&fit=crop',
-    title: 'Security & Compliance Advisory',
-    color: 'var(--color-accent-red)',
-    desc: 'Our compliance specialists help you meet local regulatory requirements — from NDPR to GDPR — and prepare for security audits.',
-    features: ['NDPR / GDPR compliance review', 'SOC 2 audit preparation', 'Penetration testing support', 'Access control policy design', 'Data residency configuration'],
-  },
-];
+import { extractTextFromRichText } from '../utils';
 
 const processSteps = [
   { step: '01', title: 'Discovery call', desc: 'We map your current workflows, pain points, and goals in a 60-minute session.' },
@@ -57,6 +12,42 @@ const processSteps = [
 ];
 
 export function ServicesPage() {
+  const [services, setServices] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL || ''}/api/services?populate=*`)
+      .then(res => res.json())
+      .then(data => {
+        const items = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
+        const fetched = items.map((item: any) => {
+          // Image URL: could be a nested media object or a direct URL string
+          const mediaUrl = item.image?.url || item.imageUrl || null;
+          const imageUrl = mediaUrl
+            ? (mediaUrl.startsWith('http') ? mediaUrl : `${import.meta.env.VITE_API_URL || ''}${mediaUrl}`)
+            : 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop';
+          
+          // Features: could be a JSON array or a label object
+          let features: string[] = [];
+          if (Array.isArray(item.features)) features = item.features;
+          else if (item.label) {
+            features = Object.values(item.label).filter((v): v is string => typeof v === 'string' && v.length > 0);
+          }
+
+          return {
+            id: item.id,
+            imageUrl,
+            title: item.title || item.name || 'Service',
+            color: item.color || 'var(--color-primary)',
+            desc: extractTextFromRichText(item.description) || item.desc || '',
+            features,
+          };
+        });
+        setServices(fetched);
+      })
+      .catch(err => console.error('Error fetching services:', err))
+      .finally(() => setLoading(false));
+  }, []);
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -78,36 +69,46 @@ export function ServicesPage() {
 
       {/* Services grid */}
       <section className="px-[20px] md:px-[40px] pb-[80px]">
-        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ imageUrl, title, color, desc, features }) => (
-            <div key={title} className="group rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col overflow-hidden">
-              {/* Image – full-width, clips cleanly via parent overflow-hidden */}
-              <div className="w-full relative flex-shrink-0" style={{ height: '240px' }}>
-                <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
-                {/* Deep bottom fade — blends image seamlessly into card content */}
-                <div
-                  className="absolute bottom-0 left-0 right-0"
-                  style={{
-                    height: '55%',
-                    background: 'linear-gradient(to top, var(--color-bg-surface) 0%, transparent 100%)',
-                  }}
-                />
-              </div>
-              {/* Content */}
-              <div className="p-6 md:p-8 flex flex-col flex-1">
-                <h3 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-3">{title}</h3>
-                <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-5">{desc}</p>
-                <ul className="space-y-2 flex-1">
-                  {features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5">
-                      <CheckCircle2 size={14} className="shrink-0 mt-0.5" style={{ color }} />
-                      <span className="text-[13px] text-[var(--color-text-secondary)]">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        <div className="max-w-[1280px] mx-auto">
+          {!loading && services.length === 0 ? (
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] rounded-[var(--radius-xl)] p-12 text-center max-w-[800px] mx-auto">
+              <BookOpen size={48} className="mx-auto text-[var(--color-text-muted)] mb-4 opacity-50" />
+              <h3 className="text-[20px] font-bold text-[var(--color-text-primary)] mb-2">No Services Available</h3>
+              <p className="text-[16px] text-[var(--color-text-secondary)]">We are currently updating our professional services. Please check back later.</p>
             </div>
-          ))}
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {services.map(({ imageUrl, title, color, desc, features }) => (
+                <div key={title} className="group rounded-[var(--radius-xl)] bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] hover:border-[rgba(10,132,255,0.3)] transition-all flex flex-col overflow-hidden">
+                  {/* Image – full-width, clips cleanly via parent overflow-hidden */}
+                  <div className="w-full relative flex-shrink-0" style={{ height: '240px' }}>
+                    <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+                    {/* Deep bottom fade — blends image seamlessly into card content */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0"
+                      style={{
+                        height: '55%',
+                        background: 'linear-gradient(to top, var(--color-bg-surface) 0%, transparent 100%)',
+                      }}
+                    />
+                  </div>
+                  {/* Content */}
+                  <div className="p-6 md:p-8 flex flex-col flex-1">
+                    <h3 className="text-[18px] font-semibold text-[var(--color-text-primary)] mb-3">{title}</h3>
+                    <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-5">{desc}</p>
+                    <ul className="space-y-2 flex-1">
+                      {features?.map((f: any) => (
+                        <li key={f} className="flex items-start gap-2.5">
+                          <CheckCircle2 size={14} className="shrink-0 mt-0.5" style={{ color }} />
+                          <span className="text-[13px] text-[var(--color-text-secondary)]">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

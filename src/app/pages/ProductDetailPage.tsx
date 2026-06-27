@@ -1,18 +1,53 @@
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
-import { modules } from './ProductsPage';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package } from 'lucide-react';
 import { Button } from '../components/Button';
 import { NotFoundPage } from './NotFoundPage';
+import { extractTextFromRichText } from '../utils';
 
 export function ProductDetailPage() {
   const { id } = useParams();
-  const product = modules.find((m) => m.id === id);
+  const [product, setProduct] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL || ''}/api/products?populate=*`)
+      .then(res => res.json())
+      .then(data => {
+        if (data?.data) {
+          const fetched = data.data.map((item: any) => {
+            // Features: label object or array
+            let features: string[] = [];
+            if (Array.isArray(item.features)) features = item.features;
+            else if (item.label) {
+              features = Object.values(item.label).filter((v): v is string => typeof v === 'string' && v.length > 0);
+            }
+            return {
+              id: String(item.id),
+              name: item.name || item.title || 'Product',
+              tagline: item.tagline || '',
+              color: item.color || 'var(--color-primary)',
+              desc: extractTextFromRichText(item.description) || item.desc || '',
+              features,
+              stat: { value: item.impact_value || '', label: item.impact_label || '' },
+              icon: Package,
+            };
+          });
+          const found = fetched.find((m: any) => m.id === String(id));
+          setProduct(found);
+        }
+      })
+      .catch(err => console.error('Error fetching product:', err))
+      .finally(() => setLoading(false));
+  }, [id]);
+
+  if (loading) return <div className="min-h-screen py-[80px] px-[20px] md:px-[40px] text-center">Loading...</div>;
 
   if (!product) {
     return <NotFoundPage />;
   }
 
-  const Icon = product.icon;
+  const Icon = product.icon || Package;
 
   return (
     <div className="min-h-screen py-[80px] px-[20px] md:px-[40px]">

@@ -1,27 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { MapPin, Clock, Briefcase, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
+import { MapPin, Clock, Briefcase, ChevronDown, ChevronUp, ArrowRight, Users } from 'lucide-react';
 import { Button } from '../components/Button';
-
-const departments = ['All', 'Engineering', 'Product', 'Sales', 'Customer Success', 'Design', 'Operations'];
-
-const jobs = [
-  { id: 1, title: 'Senior Full-Stack Engineer', dept: 'Engineering', location: 'Lagos / Remote', type: 'Full-time', level: 'Senior', desc: 'Build the core modules of our desktop application using Electron, React, and Node.js. Own features end-to-end from design through deployment.' },
-  { id: 2, title: 'Backend Engineer – Sync Engine', dept: 'Engineering', location: 'Remote', type: 'Full-time', level: 'Senior', desc: 'Design and scale our offline-sync infrastructure. Experience with CRDTs, conflict resolution, and distributed data systems preferred.' },
-  { id: 3, title: 'Mobile Engineer (React Native)', dept: 'Engineering', location: 'Remote', type: 'Full-time', level: 'Mid', desc: 'Build the companion mobile app for iOS and Android. Tight integration with the desktop product and real-time notifications.' },
-  { id: 4, title: 'Product Manager – Finance Module', dept: 'Product', location: 'Lagos', type: 'Full-time', level: 'Senior', desc: 'Own the roadmap and delivery for our finance and accounting module. Work closely with enterprise customers and engineering.' },
-  { id: 5, title: 'Enterprise Account Executive', dept: 'Sales', location: 'Nairobi / Lagos', type: 'Full-time', level: 'Senior', desc: 'Close enterprise deals across East and West Africa. 5+ years B2B SaaS sales experience required.' },
-  { id: 6, title: 'Customer Success Manager', dept: 'Customer Success', location: 'Remote', type: 'Full-time', level: 'Mid', desc: 'Own a portfolio of 50+ business accounts. Drive adoption, reduce churn, and identify expansion opportunities.' },
-  { id: 7, title: 'Senior Product Designer', dept: 'Design', location: 'Remote', type: 'Full-time', level: 'Senior', desc: 'Lead UX research and interaction design for our desktop application. Proficiency in Figma and a strong systems-thinking mindset.' },
-  { id: 8, title: 'DevOps Engineer', dept: 'Engineering', location: 'Remote', type: 'Full-time', level: 'Mid', desc: 'Manage CI/CD pipelines, cloud infrastructure, and deployment tooling for our desktop app release process.' },
-  { id: 9, title: 'Sales Development Representative', dept: 'Sales', location: 'Lagos', type: 'Full-time', level: 'Junior', desc: 'Generate qualified pipeline for the enterprise sales team. Outbound prospecting, cold calling, and demo scheduling.' },
-  { id: 10, title: 'Implementation Specialist', dept: 'Customer Success', location: 'Accra / Remote', type: 'Full-time', level: 'Mid', desc: 'Lead new customer implementations from kickoff to go-live. Strong project management and technical aptitude required.' },
-];
+import { extractTextFromRichText } from '../utils';
 
 export function CareersPage() {
+  const [jobs, setJobs] = useState<any[]>([]);
   const [activeDept, setActiveDept] = useState('All');
   const [expandedJob, setExpandedJob] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL || ''}/api/open-positions?populate=*`)
+      .then(res => res.json())
+      .then(data => {
+        const items = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
+        const fetched = items.map((item: any) => ({
+          id: item.id,
+          title: item.tittle || item.title || item.name || 'Position',
+          dept: item.department || item.dept || 'General',
+          location: item.location || 'Remote',
+          type: item.employment_type || item.type || 'Full-time',
+          level: item.level || 'Mid',
+          desc: extractTextFromRichText(item.description) || item.desc || '',
+        }));
+        setJobs(fetched);
+      })
+      .catch(err => console.error('Error fetching jobs:', err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const departments = ['All', ...Array.from(new Set(jobs.map((j) => j.dept)))];
   const filtered = activeDept === 'All' ? jobs : jobs.filter((j) => j.dept === activeDept);
 
   return (
@@ -82,51 +91,59 @@ export function CareersPage() {
             </div>
           </div>
 
-          <div className="space-y-3">
-            {filtered.map((job) => (
-              <div key={job.id} className="rounded-[var(--radius-lg)] border border-[var(--color-bg-border)] bg-[var(--color-bg-surface)] overflow-hidden hover:border-[rgba(10,132,255,0.3)] transition-all">
-                <button
-                  onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
-                  className="w-full flex flex-col md:flex-row md:items-center gap-3 md:gap-6 px-6 py-5 text-left"
-                >
-                  <div className="flex-1">
-                    <h4 className="text-[16px] font-semibold text-[var(--color-text-primary)]">{job.title}</h4>
-                    <div className="flex flex-wrap items-center gap-3 mt-1.5">
-                      <span className="flex items-center gap-1.5 text-[12px] text-[var(--color-text-muted)]">
-                        <MapPin size={12} />{job.location}
-                      </span>
-                      <span className="flex items-center gap-1.5 text-[12px] text-[var(--color-text-muted)]">
-                        <Clock size={12} />{job.type}
-                      </span>
-                      <span className="flex items-center gap-1.5 text-[12px] text-[var(--color-text-muted)]">
-                        <Briefcase size={12} />{job.level}
-                      </span>
-                    </div>
+          {!loading && jobs.length === 0 ? (
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-bg-border)] rounded-[var(--radius-xl)] p-12 text-center">
+              <Users size={48} className="mx-auto text-[var(--color-text-muted)] mb-4 opacity-50" />
+              <h3 className="text-[20px] font-bold text-[var(--color-text-primary)] mb-2">No Open Positions</h3>
+              <p className="text-[16px] text-[var(--color-text-secondary)]">We don't have any open roles right now, but we are always looking for great talent. Check back soon!</p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {filtered.length === 0 ? (
+                <div className="text-center py-16">
+                  <p className="text-[var(--color-text-muted)]">No open roles in this department right now.</p>
+                  <p className="text-[13px] text-[var(--color-text-muted)] mt-2">Send us your CV and we'll keep it on file.</p>
+                  <div className="mt-4">
+                    <Link to="/contact"><Button variant="secondary" size="md">Send Speculative Application</Button></Link>
                   </div>
-                  <div className="flex items-center gap-3 shrink-0">
-                    <span className="px-3 py-1 rounded-full bg-[rgba(10,132,255,0.1)] text-[var(--color-primary)] text-[11px] font-medium">{job.dept}</span>
-                    {expandedJob === job.id ? <ChevronUp size={16} className="text-[var(--color-text-muted)]" /> : <ChevronDown size={16} className="text-[var(--color-text-muted)]" />}
+                </div>
+              ) : (
+                filtered.map((job) => (
+                  <div key={job.id} className="rounded-[var(--radius-lg)] border border-[var(--color-bg-border)] bg-[var(--color-bg-surface)] overflow-hidden hover:border-[rgba(10,132,255,0.3)] transition-all">
+                    <button
+                      onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
+                      className="w-full flex flex-col md:flex-row md:items-center gap-3 md:gap-6 px-6 py-5 text-left"
+                    >
+                      <div className="flex-1">
+                        <h4 className="text-[16px] font-semibold text-[var(--color-text-primary)]">{job.title}</h4>
+                        <div className="flex flex-wrap items-center gap-3 mt-1.5">
+                          <span className="flex items-center gap-1.5 text-[12px] text-[var(--color-text-muted)]">
+                            <MapPin size={12} />{job.location}
+                          </span>
+                          <span className="flex items-center gap-1.5 text-[12px] text-[var(--color-text-muted)]">
+                            <Clock size={12} />{job.type}
+                          </span>
+                          <span className="flex items-center gap-1.5 text-[12px] text-[var(--color-text-muted)]">
+                            <Briefcase size={12} />{job.level}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 shrink-0">
+                        <span className="px-3 py-1 rounded-full bg-[rgba(10,132,255,0.1)] text-[var(--color-primary)] text-[11px] font-medium">{job.dept}</span>
+                        {expandedJob === job.id ? <ChevronUp size={16} className="text-[var(--color-text-muted)]" /> : <ChevronDown size={16} className="text-[var(--color-text-muted)]" />}
+                      </div>
+                    </button>
+                    {expandedJob === job.id && (
+                      <div className="px-6 pb-6 border-t border-[var(--color-bg-border)] pt-4">
+                        <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-4">{job.desc}</p>
+                        <Link to="/contact">
+                          <Button variant="primary" size="sm">Apply Now <ArrowRight size={14} /></Button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
-                </button>
-                {expandedJob === job.id && (
-                  <div className="px-6 pb-6 border-t border-[var(--color-bg-border)] pt-4">
-                    <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-4">{job.desc}</p>
-                    <Link to="/contact">
-                      <Button variant="primary" size="sm">Apply Now <ArrowRight size={14} /></Button>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-[var(--color-text-muted)]">No open roles in this department right now.</p>
-              <p className="text-[13px] text-[var(--color-text-muted)] mt-2">Send us your CV and we'll keep it on file.</p>
-              <div className="mt-4">
-                <Link to="/contact"><Button variant="secondary" size="md">Send Speculative Application</Button></Link>
-              </div>
+                ))
+              )}
             </div>
           )}
 

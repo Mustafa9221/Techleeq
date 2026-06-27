@@ -1,45 +1,14 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { Target, Users, Globe2, ArrowRight, Lightbulb, Shield, Zap, Instagram, Facebook, Linkedin, Globe } from 'lucide-react';
 import { Button } from '../components/Button';
+import { extractTextFromRichText } from '../utils';
 
 const values = [
   { icon: Lightbulb, title: 'Creativity First', desc: "We don't just write lines of code. We obsess over the user experience, ensuring your software is beautifully designed, highly intuitive, and enjoyable for your team to use." },
   { icon: Shield, title: 'Built to Scale', desc: 'We engineer our products and services using modern, secure tech stacks. As your business grows, your Techleeq software smoothly evolves right alongside you.' },
   { icon: Zap, title: 'Agile & Transparent', desc: 'Being a focused, energetic team means we move fast. You get direct collaboration, rapid feature deployment, and absolute transparency at every single milestone.' },
   { icon: Globe2, title: 'The Perfect Hybrid', desc: 'Whether you need a bespoke application built from scratch or want to plug into our ready-to-go software products, we provide a complete technical ecosystem under one roof.' },
-];
-
-const team = [
-  {
-    name: 'Abdullah Bilal',
-    title: 'Founder & CEO',
-    bio: 'Business Management expert and AI/ML Engineer. Abdullah brings visionary leadership and technical depth, steering Techleeq to innovate at the intersection of AI and business strategy.',
-    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop',
-    instagram: '#',
-    facebook: '#',
-    linkedin: '#',
-    portfolio: '#'
-  },
-  {
-    name: 'Mustafa',
-    title: 'CTO (Chief Technical Officer)',
-    bio: 'Mustafa is a full-stack powerhouse with a passion for building robust, high-performance systems. He leads our engineering efforts, ensuring every line of code meets the highest standards.',
-    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop',
-    instagram: '#',
-    facebook: '#',
-    linkedin: '#',
-    portfolio: '#'
-  },
-  {
-    name: 'Hamza',
-    title: 'COO (Chief Operation Officer)',
-    bio: 'Hamza is the operational backbone of Techleeq, with extensive experience in streamlining workflows and scaling operations. He ensures seamless project delivery and exceptional client satisfaction.',
-    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop',
-    instagram: '#',
-    facebook: '#',
-    linkedin: '#',
-    portfolio: '#'
-  },
 ];
 
 const stats = [
@@ -50,6 +19,37 @@ const stats = [
 ];
 
 export function AboutPage() {
+  const [team, setTeam] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL || ''}/api/teams?populate=*`)
+      .then(res => res.json())
+      .then(data => {
+        const items = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
+        const fetched = items.map((item: any) => {
+          // Image can be a nested Strapi media object
+          const mediaUrl = item.photo?.url || item.avatar?.url || item.image?.url || item.imageUrl || null;
+          const imageUrl = mediaUrl
+            ? (mediaUrl.startsWith('http') ? mediaUrl : `${import.meta.env.VITE_API_URL || ''}${mediaUrl}`)
+            : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop';
+          return {
+            id: item.id,
+            name: item.name || 'Team Member',
+            title: item.title || item.role || item.position || 'Role',
+            bio: extractTextFromRichText(item.bio || item.description) || '',
+            imageUrl,
+            instagram: item.instagram || '#',
+            facebook: item.facebook || '#',
+            linkedin: item.linkedin || '#',
+            portfolio: item.portfolio || item.website || '#',
+          };
+        });
+        setTeam(fetched);
+      })
+      .catch(err => console.error('Error fetching teams:', err))
+      .finally(() => setLoading(false));
+  }, []);
   return (
     <div className="min-h-screen">
       {/* Hero */}
